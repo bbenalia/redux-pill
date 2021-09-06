@@ -1,0 +1,179 @@
+{
+	"info": {
+		"_postman_id": "b025eafb-1642-456d-9afc-3672d1469efc",
+		"name": "REDUX + LARAVEL",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Login",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/users/?email=pau@assemblerschool.com&password=123456",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"users",
+						""
+					],
+					"query": [
+						{
+							"key": "email",
+							"value": "pau@assemblerschool.com"
+						},
+						{
+							"key": "password",
+							"value": "123456"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": null,\r\n    \"email\": \"new@assemblerschool.com\",\r\n    \"first_name\": \"New\",\r\n    \"last_name\": \"God\",\r\n    \"password\": \"123321\",\r\n    \"creation_date\": \"2021-12-01 23:59:59\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/users/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"users",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User Info",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/users/1/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"users",
+						"1",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Favorites By User",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/favorite?userId=1&_expand=properties",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"favorite"
+					],
+					"query": [
+						{
+							"key": "userId",
+							"value": "1"
+						},
+						{
+							"key": "_expand",
+							"value": "properties"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "All Properties",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/properties",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"properties"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Properties With Filters",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/properties?price_gte=100000&price_lte=300000&room=5&bath=3&pet=true",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"properties"
+					],
+					"query": [
+						{
+							"key": "price_gte",
+							"value": "100000"
+						},
+						{
+							"key": "price_lte",
+							"value": "300000"
+						},
+						{
+							"key": "room",
+							"value": "5"
+						},
+						{
+							"key": "bath",
+							"value": "3"
+						},
+						{
+							"key": "pet",
+							"value": "true"
+						}
+					]
+				},
+				"description": "## Filter\nUse . to access deep properties\n\n- GET /posts?title=json-server&author=typicode\n- GET /posts?id=1&id=2\n- GET /comments?author.name=typicode\n\n## Sort\nAdd _sort and _order (ascending order by default)\n\n- GET /posts?_sort=views&_order=asc\n- GET /posts/1/comments?_sort=votes&_order=asc\n\nFor multiple fields, use the following format:\n\n- GET /posts?_sort=user,views&_order=desc,asc\n\n## Operators\nAdd _gte or _lte for getting a range\n- GET /posts?views_gte=10&views_lte=20\n\nAdd _ne to exclude a value\n- GET /posts?id_ne=1\n\nAdd _like to filter (RegExp supported)\n- GET /posts?title_like=server\n\n## Full-text search\nAdd q\n- GET /posts?q=internet"
+			},
+			"response": []
+		}
+	]
+}
