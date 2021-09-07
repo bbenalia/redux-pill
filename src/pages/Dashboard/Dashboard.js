@@ -4,7 +4,7 @@ import withLayout from "../../hoc/withLayout";
 
 function Dashboard() {
   return (
-    <div>
+    <div className="container mt-5">
       <RadioButton />
     </div>
   );
