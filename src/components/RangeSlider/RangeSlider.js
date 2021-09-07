@@ -28,7 +28,7 @@ export default function RangeSlider({
   const handleChangeMinimum = (event) => {
     const targetValue = event.target.value;
 
-    if (targetValue > min && targetValue < max) {
+    if (targetValue >= min && targetValue <= max) {
       setMinValue(targetValue);
       setSliderValue([(100 / max) * targetValue, sliderValue[1]]);
 
@@ -39,7 +39,7 @@ export default function RangeSlider({
   const handleChangeMaximum = (event) => {
     const targetValue = event.target.value;
 
-    if (targetValue > min && targetValue < max) {
+    if (targetValue >= min && targetValue <= max) {
       setMaxValue(targetValue);
       setSliderValue([sliderValue[0], (100 / max) * targetValue]);
 
