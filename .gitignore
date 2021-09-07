@@ -1,2 +1,8 @@
+# Mac file
+.DS_Store
+
+# Project files
+
+# dependencies
 node_modules
 package-lock.json
