@@ -6,7 +6,7 @@ export default function CheckBox({
   disabled = false,
   label = "Default checkbox",
   checked = false,
-  handleClick = () => {},
+  handleChange = () => {},
   ...props
 }) {
   return (
@@ -18,7 +18,7 @@ export default function CheckBox({
         checked={checked}
         id="flexCheckDefault"
         disabled={disabled}
-        onClick={handleClick}
+        onChange={handleChange}
         {...props}
       />
       <label className="form-check-label" htmlFor="flexCheckDefault">
