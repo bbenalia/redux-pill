@@ -1,8 +1,25 @@
+// import React, { useState } from "react";
 import React from "react";
-import RadioButton from "../../components/RadioButton";
+import CheckBox from "../../components/CheckBox";
+import RangeSlider from "../../components/RangeSlider";
+import withLayout from "../../hoc/withLayout";
+
+// import RadioButton from "../../components/RadioButton";
 import SelectButton from "../../components/SelectButton";
 import SearchBar from "../../components/SearchBar";
-import withLayout from "../../hoc/withLayout";
+
+// function Dashboard() {
+// const [state, setState] = useState([0, 100]);
+
+// const handleChange = (event, minVal, maxVal) => {
+//   // setState(newValue);
+// };
+
+// return (
+//   <div className="container mt-5">
+//     <CheckBox />
+//     <RangeSlider max={4000} min={0} />
+//   </div>
 
 function Dashboard() {
   const toggleSelect = (event) => {
@@ -31,7 +48,7 @@ function Dashboard() {
           <div className="row">
             <div className="col-3">
               <h6>Type of home</h6>
-              <RadioButton />
+              <CheckBox />
             </div>
             <div className="col-3">
               <h6>Bedrooms</h6>
@@ -73,6 +90,7 @@ function Dashboard() {
             </div>
             <div className="col-3">
               <h6>Price Range</h6>
+              <RangeSlider max={4000} min={0} />
             </div>
             <div className="col-3">
               <h6>Publication Date</h6>

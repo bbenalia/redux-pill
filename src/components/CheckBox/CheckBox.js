@@ -1,12 +1,12 @@
 import React from "react";
 
-import "./RadioButton.scss";
+import "./CheckBox.scss";
 
-export default function RadioButton({
+export default function CheckBox({
   disabled = false,
   label = "Default checkbox",
   checked = false,
-  handleClick = () => {},
+  handleChange = () => {},
   ...props
 }) {
   return (
@@ -18,7 +18,7 @@ export default function RadioButton({
         checked={checked}
         id="flexCheckDefault"
         disabled={disabled}
-        onClick={handleClick}
+        onChange={handleChange}
         {...props}
       />
       <label className="form-check-label" htmlFor="flexCheckDefault">
