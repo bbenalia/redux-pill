@@ -1,8 +1,8 @@
 import React from "react";
 
-import "./RadioButton.scss";
+import "./CheckBox.scss";
 
-export default function RadioButton({
+export default function CheckBox({
   disabled = false,
   label = "Default checkbox",
   checked = false,

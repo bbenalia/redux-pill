@@ -1,11 +1,11 @@
 import React from "react";
-import RadioButton from "../../components/RadioButton";
+import CheckBox from "../../components/CheckBox";
 import withLayout from "../../hoc/withLayout";
 
 function Dashboard() {
   return (
     <div className="container mt-5">
-      <RadioButton />
+      <CheckBox />
     </div>
   );
 }
