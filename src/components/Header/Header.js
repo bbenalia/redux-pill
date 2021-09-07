@@ -7,7 +7,7 @@ import "./Header.scss";
 
 export default function Header() {
   return (
-    <header>
+    <header className="container">
       <nav className="navbar navbar-expand-lg navbar-light">
         <div className="container-fluid">
           <Link className="navbar-brand" to={HOME}>

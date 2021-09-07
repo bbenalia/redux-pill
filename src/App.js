@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 import { HOME, DASHBOARD } from "./constants/routes";
+
 import Home from "./pages/Home";
 
 import "./sass/main.scss";
