@@ -16,7 +16,7 @@ function withLayout(WrappedComponent) {
 
   function WrapperComponent({ ...props }) {
     return (
-      <div className="container">
+      <div className="container-fluid p-0">
         <Header />
         <Main>
           <WrappedComponent {...props} />
