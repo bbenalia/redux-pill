@@ -1,12 +1,12 @@
 import React from "react";
 
-function DeleteIcon() {
+function CoinIcon({ size }) {
   return (
     <>
       <svg
         xmlns="http://www.w3.org/2000/svg"
-        width="16"
-        height="16"
+        width={size}
+        height={size}
         fill="currentColor"
         className="bi bi-coin"
         viewBox="0 0 16 16"
@@ -25,4 +25,4 @@ function DeleteIcon() {
   );
 }
 
-export default DeleteIcon;
+export default CoinIcon;

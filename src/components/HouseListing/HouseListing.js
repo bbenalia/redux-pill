@@ -7,6 +7,10 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 
+import "./HouseListing.scss";
+import DeleteIcon from "../SVGIcons/DeleteIcon";
+import CoinIcon from "../SVGIcons/CoinIcon";
+
 // function createData(id, image, address, price, chars, isSold, remove) {
 //   return { id, image, address, price, chars, isSold, remove };
 // }
@@ -17,6 +21,8 @@ const data = [
     street: "Avinguda Castellví",
     number: 10,
     city: "Molins de Rei",
+    image:
+      "https://images.unsplash.com/photo-1580587771525-78b9dba3b914?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8aG91c2V8ZW58MHx8MHx8&ixlib=rb-1.2.1&w=1000&q=80",
     province: "Barcelona",
     country: "Spain",
     status: "available",
@@ -41,6 +47,8 @@ const data = [
     street: "dsadasds",
     number: 10,
     city: "asdasdasd",
+    image:
+      "https://images.unsplash.com/photo-1580587771525-78b9dba3b914?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8aG91c2V8ZW58MHx8MHx8&ixlib=rb-1.2.1&w=1000&q=80",
     province: "Barcelona",
     country: "Spain",
     status: "available",
@@ -91,11 +99,11 @@ export default function BasicTable() {
         <TableHead>
           <TableRow>
             <TableCell>Image</TableCell>
-            <TableCell align="right">Address</TableCell>
-            <TableCell align="right">Price</TableCell>
-            <TableCell align="right">Characteristics</TableCell>
-            <TableCell align="right">Mark as Sold</TableCell>
-            <TableCell align="right">Remove</TableCell>
+            <TableCell align="left">Address</TableCell>
+            <TableCell align="left">Price</TableCell>
+            <TableCell align="left">Characteristics</TableCell>
+            <TableCell align="center">Mark as Sold</TableCell>
+            <TableCell align="center">Remove</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -105,17 +113,32 @@ export default function BasicTable() {
               sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
             >
               <TableCell component="th" scope="row">
-                {row.country}
+                <img
+                  className="rounded size-img"
+                  src={row.image}
+                  alt={row.street + row.id}
+                />
               </TableCell>
-              <TableCell align="right">{row.street}</TableCell>
-              <TableCell align="right">{row.price}</TableCell>
-              <TableCell align="right">{row.bath}</TableCell>
-              <TableCell align="right">{row.status}</TableCell>
-              <TableCell align="right">R</TableCell>
+              <TableCell align="left">
+                <p className="fs-5 fw-bold">{row.street}</p>
+                <p>{row.city}</p>
+              </TableCell>
+              <TableCell align="left">
+                <p className="text-warning">${row.price}</p>
+              </TableCell>
+              <TableCell align="left">{row.bath}</TableCell>
+              <TableCell align="center">
+                <CoinIcon size={22} />
+              </TableCell>
+              <TableCell align="center">
+                <DeleteIcon size={20} />
+              </TableCell>
             </TableRow>
           ))}
         </TableBody>
       </Table>
+      {/* TODO: Remove: lo añadí para poder ver el final */}
+      <div style={{ "min-height": "200px" }} />
     </TableContainer>
   );
 }
