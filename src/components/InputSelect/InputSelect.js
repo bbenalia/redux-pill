@@ -17,6 +17,7 @@ function InputSelect({
   value = "",
   name = "",
   options,
+  defaultOption,
   handleChange = () => {},
   handleBlur = () => {},
   ...props
@@ -32,7 +33,7 @@ function InputSelect({
       onBlur={handleBlur}
       {...props}
     >
-      <option selected>Open this select menu</option>
+      <option selected>{defaultOption}</option>
       {buildSelectOptions(options)}
     </select>
   );
