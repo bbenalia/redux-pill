@@ -8,16 +8,23 @@ export function getFilterParams(filters) {
     });
   }
 
+  if (filters.room) {
+    Object.entries(filters.room).map(([key, value]) => {
+      if (value) query += `room=${key}&`;
+      return value;
+    });
+  }
+
   if (filters.search.length > 0) {
     query += `q=${filters.search}&`;
   }
 
-  if (filters.price) {
-    const { min, max } = filters.price;
-    query += `price_gte=${min}&price_lte=${max}&`;
-  }
+  // if (filters.price) {
+  //   const { min, max } = filters.price;
+  //   query += `price_gte=${min}&price_lte=${max}&`;
+  // }
 
-  // console.log(query);
+  console.log(query);
 
   return query;
 }

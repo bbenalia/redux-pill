@@ -12,11 +12,11 @@ import {
   fetchProducts,
   setFilteredProducts,
 } from "../../redux/products/actions";
-<<<<<<< HEAD
-import { setHomeFilter, setRoomFilter } from "../../redux/filters/actions";
-=======
-import { setHomeFilter, setPriceFilter } from "../../redux/filters/actions";
->>>>>>> 9b0ac8003a692bc8db7aa5f57a124ba126c6f634
+import {
+  setHomeFilter,
+  setRoomFilter,
+  setPriceFilter,
+} from "../../redux/filters/actions";
 
 function Dashboard() {
   const { filters } = useSelector((state) => state.filters);
@@ -35,7 +35,6 @@ function Dashboard() {
     const obj = { [event.target.name]: event.target.checked };
     dispatch(setHomeFilter(obj));
   };
-
 
   const handleChangePrice = (_event, minVal, maxVal) => {
     const obj = { min: minVal, max: maxVal };
