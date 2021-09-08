@@ -8,16 +8,31 @@ import {
 
 const reducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case FILTER_BY_HOME:
-      return { ...state, status: "ok", typeOfHome: action.payload };
+    case FILTER_BY_HOME: {
+      const {
+        filters: { type },
+      } = state;
+      const { filters } = state;
+
+      return {
+        ...state,
+        status: "ok",
+        filters: {
+          ...filters,
+          type: { ...type, ...action.payload },
+        },
+      };
+    }
+
     case FILTER_BY_SEARCH: {
       const { filters } = state;
       return {
         ...state,
         status: "ok",
-        filters: { ...filters, search: { q: action.payload } },
+        filters: { ...filters, search: action.payload },
       };
     }
+
     case LOADING_FILTER_DATA:
       return { ...state, status: "loading" };
 

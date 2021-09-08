@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import CheckBox from "../../components/CheckBox";
 import RangeSlider from "../../components/RangeSlider";
 import withLayout from "../../hoc/withLayout";
@@ -8,18 +8,38 @@ import HouseListing from "../../components/HouseListing";
 import SelectButton from "../../components/SelectButton";
 import SearchBar from "../../components/SearchBar";
 import InputSelect from "../../components/InputSelect";
-import { fetchProducts } from "../../redux/products/actions";
+import {
+  fetchProducts,
+  setFilteredProducts,
+} from "../../redux/products/actions";
+import { setHomeFilter } from "../../redux/filters/actions";
 
 function Dashboard() {
-  const toggleSelect = (event) => {
-    event.target.classList.toggle("unselected");
-  };
+  const { filters } = useSelector((state) => state.filters);
 
   const dispatch = useDispatch();
 
   useEffect(() => {
+    dispatch(setFilteredProducts(filters));
+  }, [dispatch, filters]);
+
+  useEffect(() => {
     dispatch(fetchProducts());
   }, [dispatch]);
+
+  const handleChangeHomeType = (event) => {
+    const obj = { [event.target.name]: event.target.checked };
+    dispatch(setHomeFilter(obj));
+  };
+
+  // const handleBedrooms = (event) => {
+  //   const bedroomObject = { room: ...room, event.target.value };
+  //   console.log(bedroomObject);
+  // };
+
+  const toggleSelect = (event) => {
+    event.target.classList.toggle("unselected");
+  };
 
   return (
     <>
@@ -45,15 +65,35 @@ function Dashboard() {
               <h6>Type of home</h6>
               <div className="row">
                 <div className="col">
-                  <CheckBox id="flat" name="home-type" label="Flat/Apartment" />
-                  <CheckBox id="duplex" name="home-type" label="Duplex" />
+                  <CheckBox
+                    id="flat"
+                    name="flat/apartment"
+                    label="Flat/Apartment"
+                    checked={filters.type["flat/apartment"]}
+                    handleChange={handleChangeHomeType}
+                  />
+                  <CheckBox
+                    id="duplex"
+                    name="duplex"
+                    label="Duplex"
+                    checked={filters.type.duplex}
+                    handleChange={handleChangeHomeType}
+                  />
                 </div>
                 <div className="col">
-                  <CheckBox id="house" name="home-type" label="House" />
                   <CheckBox
-                    id="pent-house"
-                    name="home-type"
-                    label="PentHouse"
+                    id="house"
+                    name="house"
+                    label="House"
+                    checked={filters.type.house}
+                    handleChange={handleChangeHomeType}
+                  />
+                  <CheckBox
+                    id="penthouse"
+                    name="penthouse"
+                    label="Penthouse"
+                    checked={filters.type.penthouse}
+                    handleChange={handleChangeHomeType}
                   />
                 </div>
               </div>
@@ -61,7 +101,12 @@ function Dashboard() {
 
             <div className="col-3">
               <h6>Bedrooms</h6>
-              <SelectButton unselected value={0} onClick={toggleSelect}>
+              <SelectButton
+                unselected
+                value={0}
+                name="room1"
+                onClick={toggleSelect}
+              >
                 0 (studio flat)
               </SelectButton>
               <SelectButton unselected value={1} onClick={toggleSelect}>
