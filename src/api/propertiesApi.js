@@ -1,4 +1,5 @@
 import { BASE_URL, PROPERTIES } from "../constants/routes";
+import { getFilterParams } from "../helpers/filterParams";
 
 const axios = require("axios").default;
 
@@ -17,23 +18,6 @@ export async function getProductsBySearch(search, api = makeProductsApi()) {
 }
 
 export async function getProductsByFilters(filters, api = makeProductsApi()) {
-  return api.get(`${PROPERTIES}${filters}`);
+  const queryParams = getFilterParams(filters);
+  return api.get(`${PROPERTIES}${queryParams}`);
 }
-
-// const getProperties = () => {
-//   const config = {
-//     method: "get",
-//     url: "http://localhost:3000/properties",
-//     headers: {},
-//   };
-
-//   axios(config)
-//     .then((response) => {
-//       const properties = [response.data];
-//       console.log(properties);
-//       return properties;
-//     })
-//     .catch((error) => {
-//       console.log(error);
-//     });
-// };

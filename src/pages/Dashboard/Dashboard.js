@@ -8,7 +8,10 @@ import HouseListing from "../../components/HouseListing";
 import SelectButton from "../../components/SelectButton";
 import SearchBar from "../../components/SearchBar";
 import InputSelect from "../../components/InputSelect";
-import { fetchProducts } from "../../redux/products/actions";
+import {
+  fetchProducts,
+  setFilteredProducts,
+} from "../../redux/products/actions";
 import { setHomeFilter } from "../../redux/filters/actions";
 
 function Dashboard() {
@@ -21,8 +24,12 @@ function Dashboard() {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    dispatch(setFilteredProducts(filters));
+  }, [filters]);
+
+  useEffect(() => {
     dispatch(fetchProducts());
-  }, [dispatch]);
+  }, []);
 
   const handleChangeHomeType = (event) => {
     const obj = { [event.target.name]: event.target.checked };
