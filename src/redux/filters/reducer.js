@@ -1,6 +1,8 @@
 import INITIAL_STATE from "./state";
+
 import {
   FILTER_BY_HOME,
+  FILTER_BY_PRICE,
   FILTER_BY_SEARCH,
   FILTER_BY_ROOM,
   LOADING_FILTER_DATA,
@@ -21,6 +23,19 @@ const reducer = (state = INITIAL_STATE, action) => {
         filters: {
           ...filters,
           type: { ...type, ...action.payload },
+        },
+      };
+    }
+
+    case FILTER_BY_PRICE: {
+      const { filters } = state;
+
+      return {
+        ...state,
+        status: "ok",
+        filters: {
+          ...filters,
+          price: action.payload,
         },
       };
     }

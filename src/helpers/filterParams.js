@@ -12,5 +12,12 @@ export function getFilterParams(filters) {
     query += `q=${filters.search}&`;
   }
 
+  if (filters.price) {
+    const { min, max } = filters.price;
+    query += `price_gte=${min}&price_lte=${max}&`;
+  }
+
+  // console.log(query);
+
   return query;
 }
