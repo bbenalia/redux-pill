@@ -3,6 +3,9 @@ import React from "react";
 import "./CheckBox.scss";
 
 export default function CheckBox({
+  id = "flexCheckDefault",
+  name,
+  value,
   disabled = false,
   label = "Default checkbox",
   checked = false,
@@ -14,14 +17,15 @@ export default function CheckBox({
       <input
         className="form-check-input"
         type="checkbox"
-        value=""
+        id={id}
+        name={name}
+        value={value}
         checked={checked}
-        id="flexCheckDefault"
         disabled={disabled}
         onChange={handleChange}
         {...props}
       />
-      <label className="form-check-label" htmlFor="flexCheckDefault">
+      <label className="form-check-label" htmlFor={id}>
         {label}
       </label>
     </div>
