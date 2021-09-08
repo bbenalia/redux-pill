@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import Slider from "@material-ui/core/Slider";
 
-// import { withStyles } from "@material-ui/styles";
-
 import "./RangeSlider.scss";
 
 export default function RangeSlider({
@@ -22,6 +20,7 @@ export default function RangeSlider({
     setSliderValue(newValue);
     setMinValue(minVal);
     setMaxValue(maxVal);
+
     handleChange(_event, minVal, maxVal);
   };
 
@@ -46,37 +45,6 @@ export default function RangeSlider({
       handleChange(event, minValue, targetValue);
     }
   };
-
-  // const CustomSlider = withStyles({
-  //   root: {
-  //     color: "#0d6efd",
-  //     height: 8,
-  //   },
-  //   thumb: {
-  //     height: 24,
-  //     width: 24,
-  //     backgroundColor: "#fff",
-  //     border: "2px solid currentColor",
-  //     marginTop: -8,
-  //     marginLeft: -12,
-  //     "&:focus, &:hover, &$active": {
-  //       boxShadow: "inherit",
-  //     },
-  //   },
-  //   active: {},
-  //   valueLabel: {
-  //     left: "calc(-50% + 4px)",
-  //   },
-  //   track: {
-  //     height: 8,
-  //     borderRadius: 4,
-  //   },
-  //   rail: {
-  //     height: 8,
-  //     borderRadius: 4,
-  //     backgroundColor: "#adb5bd",
-  //   },
-  // })(Slider);
 
   return (
     <div>
@@ -113,20 +81,19 @@ export default function RangeSlider({
           </div>
         </div>
       </div>
-      {/* <CustomSlider
-        valueLabelDisplay="off"
-        // aria-label="custom slider"
-        defaultValue={[20, 80]}
-        value={sliderValue}
-        onChange={handleChangeSlider}
-        {...props}
-      /> */}
+
       <Slider
         valueLabelDisplay="off"
-        // aria-label="custom slider"
         defaultValue={[20, 80]}
         value={sliderValue}
         onChange={handleChangeSlider}
+        disableSwap
+        sx={{
+          color: "#0d6efd",
+          "& .MuiSlider-rail": {
+            backgroundColor: "#adb5bd",
+          },
+        }}
         {...props}
       />
     </div>
