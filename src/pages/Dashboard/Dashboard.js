@@ -19,7 +19,7 @@ function Dashboard() {
 
   useEffect(() => {
     dispatch(fetchProducts());
-  }, []);
+  }, [dispatch]);
 
   return (
     <>

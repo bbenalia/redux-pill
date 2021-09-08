@@ -15,6 +15,11 @@ import CoinIcon from "../SVGIcons/CoinIcon";
 
 export default function BasicTable() {
   const { status, data } = useSelector((state) => state.products);
+  const { status: filterStatus, filters } = useSelector(
+    (state) => state.filters,
+  );
+  console.log(filters);
+  console.log(filterStatus);
 
   return (
     <TableContainer component={Paper} className="mb-5">
