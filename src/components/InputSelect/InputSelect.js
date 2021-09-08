@@ -5,7 +5,7 @@ import "./InputSelect.scss";
 function buildSelectOptions(arrOption = ["element 1", "element 2"]) {
   return arrOption.map((element) => {
     return (
-      <option key={element.id} value={element}>
+      <option key={element} value={element}>
         {element}
       </option>
     );
@@ -33,7 +33,7 @@ function InputSelect({
       onBlur={handleBlur}
       {...props}
     >
-      <option selected>{defaultOption}</option>
+      <option defaultValue>{defaultOption}</option>
       {buildSelectOptions(options)}
     </select>
   );
