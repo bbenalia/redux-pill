@@ -5,6 +5,7 @@ import SearchIcon from "../SVGIcons/SearchIcon";
 function SearchBar() {
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log(e);
   };
 
   return (
