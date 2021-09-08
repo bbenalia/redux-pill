@@ -19,7 +19,7 @@ export default function BasicTable() {
 
   useEffect(() => {
     console.log("HouseListing ->", filters);
-  }, []);
+  }, [filters]);
 
   return (
     <TableContainer component={Paper} className="mb-5">
