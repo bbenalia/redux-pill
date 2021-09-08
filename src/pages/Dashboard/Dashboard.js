@@ -1,5 +1,5 @@
-import React /* , { useEffect }  */ from "react";
-// import { useDispatch } from "react-redux";
+import React, { useEffect } from "react";
+import { useDispatch } from "react-redux";
 import CheckBox from "../../components/CheckBox";
 import RangeSlider from "../../components/RangeSlider";
 import withLayout from "../../hoc/withLayout";
@@ -8,18 +8,18 @@ import HouseListing from "../../components/HouseListing";
 import SelectButton from "../../components/SelectButton";
 import SearchBar from "../../components/SearchBar";
 import InputSelect from "../../components/InputSelect";
-// import { fetchProducts } from "../../redux/products/actions";
+import { fetchProducts } from "../../redux/products/actions";
 
 function Dashboard() {
   const toggleSelect = (event) => {
     event.target.classList.toggle("unselected");
   };
 
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-  // useEffect(() => {
-  //   dispatch(fetchProducts());
-  // }, []);
+  useEffect(() => {
+    dispatch(fetchProducts());
+  }, []);
 
   return (
     <>

@@ -1,5 +1,5 @@
-import React, { useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import React from "react";
+import { useSelector } from "react-redux";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -8,22 +8,13 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { UilBath, UilBedDouble, UilSquare } from "@iconscout/react-unicons";
-import { fetchProducts } from "../../redux/products/actions";
 
 import "./HouseListing.scss";
 import DeleteIcon from "../SVGIcons/DeleteIcon";
 import CoinIcon from "../SVGIcons/CoinIcon";
 
-// const value = [];
-
 export default function BasicTable() {
   const { status, data } = useSelector((state) => state.products);
-
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(fetchProducts());
-  }, []);
 
   console.log(status);
   return (
