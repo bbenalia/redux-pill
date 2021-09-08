@@ -56,7 +56,8 @@
       "air_conditioning": true,
       "swimming_pool": false,
       "terrace": true,
-      "publication_date": "2020/12/01 01:01:01"
+      "publication_date": "2020/12/01 01:01:01",
+      "image": "https://images.unsplash.com/photo-1580587771525-78b9dba3b914?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8aG91c2V8ZW58MHx8MHx8&ixlib=rb-1.2.1&w=1000&q=80"
     },
     {
       "id": 2,
@@ -80,7 +81,8 @@
       "air_conditioning": true,
       "swimming_pool": false,
       "terrace": true,
-      "publication_date": "2020/12/01 01:01:01"
+      "publication_date": "2020/12/01 01:01:01",
+      "image": "https://images.unsplash.com/photo-1580587771525-78b9dba3b914?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8aG91c2V8ZW58MHx8MHx8&ixlib=rb-1.2.1&w=1000&q=80"
     },
     {
       "id": 3,
@@ -104,7 +106,8 @@
       "air_conditioning": true,
       "swimming_pool": false,
       "terrace": true,
-      "publication_date": "2020/12/01 01:01:01"
+      "publication_date": "2020/12/01 01:01:01",
+      "image": "https://images.unsplash.com/photo-1580587771525-78b9dba3b914?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8aG91c2V8ZW58MHx8MHx8&ixlib=rb-1.2.1&w=1000&q=80"
     }
   ],
   "favorite": [

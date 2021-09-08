@@ -1,5 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
+
+import ReduxProvider from "./redux/Provider";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 
@@ -8,7 +10,9 @@ import "bootstrap/dist/js/bootstrap.bundle.min";
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <ReduxProvider>
+      <App />
+    </ReduxProvider>
   </React.StrictMode>,
   document.getElementById("root"),
 );
