@@ -3,6 +3,7 @@ import { getProductsBySearch } from "../../api/propertiesApi";
 import {
   FILTER_BY_HOME,
   FILTER_BY_SEARCH,
+  FILTER_BY_ROOM,
   LOADING_FILTER_DATA,
   ERROR_FILTER_DATA,
 } from "./types";
@@ -15,6 +16,11 @@ export const setHomeFilter = (homeFilter) => ({
 export const filterBySearch = (search) => ({
   type: FILTER_BY_SEARCH,
   payload: search,
+});
+
+export const setRoomFilter = (room) => ({
+  type: FILTER_BY_ROOM,
+  payload: room,
 });
 
 export const fetchBySearch = (search) => {

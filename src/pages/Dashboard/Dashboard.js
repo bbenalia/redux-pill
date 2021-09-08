@@ -12,7 +12,7 @@ import {
   fetchProducts,
   setFilteredProducts,
 } from "../../redux/products/actions";
-import { setHomeFilter } from "../../redux/filters/actions";
+import { setHomeFilter, setRoomFilter } from "../../redux/filters/actions";
 
 function Dashboard() {
   const { filters } = useSelector((state) => state.filters);
@@ -32,13 +32,12 @@ function Dashboard() {
     dispatch(setHomeFilter(obj));
   };
 
-  // const handleBedrooms = (event) => {
-  //   const bedroomObject = { room: ...room, event.target.value };
-  //   console.log(bedroomObject);
-  // };
-
-  const toggleSelect = (event) => {
+  const handleBedrooms = (event) => {
     event.target.classList.toggle("unselected");
+    const objRoom = {
+      [event.target.value]: event.target.classList.length === 3,
+    };
+    dispatch(setRoomFilter(objRoom));
   };
 
   return (
@@ -105,33 +104,33 @@ function Dashboard() {
                 unselected
                 value={0}
                 name="room1"
-                onClick={toggleSelect}
+                onClick={handleBedrooms}
               >
                 0 (studio flat)
               </SelectButton>
-              <SelectButton unselected value={1} onClick={toggleSelect}>
+              <SelectButton unselected value={1} onClick={handleBedrooms}>
                 1
               </SelectButton>
-              <SelectButton unselected value={2} onClick={toggleSelect}>
+              <SelectButton unselected value={2} onClick={handleBedrooms}>
                 2
               </SelectButton>
-              <SelectButton unselected value={3} onClick={toggleSelect}>
+              <SelectButton unselected value={3} onClick={handleBedrooms}>
                 3
               </SelectButton>
-              <SelectButton unselected value={4} onClick={toggleSelect}>
+              <SelectButton unselected value={4} onClick={handleBedrooms}>
                 4 or +
               </SelectButton>
             </div>
 
             <div className="col-3">
               <h6>Bathrooms</h6>
-              <SelectButton unselected value={1} onClick={toggleSelect}>
+              <SelectButton unselected value={1} onClick={handleBedrooms}>
                 1
               </SelectButton>
-              <SelectButton unselected value={2} onClick={toggleSelect}>
+              <SelectButton unselected value={2} onClick={handleBedrooms}>
                 2
               </SelectButton>
-              <SelectButton unselected value={3} onClick={toggleSelect}>
+              <SelectButton unselected value={3} onClick={handleBedrooms}>
                 3 or +
               </SelectButton>
             </div>
