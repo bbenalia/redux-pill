@@ -12,7 +12,7 @@ export function getFilterParams(filters) {
     query += `q=${filters.search}&`;
   }
 
-  if (filters.price) {
+  if (filters.price.min || filters.price.max) {
     const { min, max } = filters.price;
     query += `price_gte=${min}&price_lte=${max}&`;
   }

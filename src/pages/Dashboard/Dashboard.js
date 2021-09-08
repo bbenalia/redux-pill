@@ -1,5 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
+
 import CheckBox from "../../components/CheckBox";
 import RangeSlider from "../../components/RangeSlider";
 import withLayout from "../../hoc/withLayout";
@@ -13,18 +15,29 @@ import {
   setFilteredProducts,
 } from "../../redux/products/actions";
 import { setHomeFilter, setPriceFilter } from "../../redux/filters/actions";
+import { getFilterParams } from "../../helpers/filterParams";
+import useQuery from "../../hooks/useQuery";
 
 function Dashboard() {
   const { filters } = useSelector((state) => state.filters);
-
   const dispatch = useDispatch();
+  const history = useHistory();
+  const queryString = useQuery();
 
   useEffect(() => {
     dispatch(setFilteredProducts(filters));
-  }, [dispatch, filters]);
+
+    const query = getFilterParams(filters);
+    history.push(query);
+  }, [dispatch, filters, history]);
 
   useEffect(() => {
+    const queryParam = queryString.toString().replace("%2F", "/");
+
+    if (queryParam) history.push(`?${queryParam}`);
+
     dispatch(fetchProducts());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dispatch]);
 
   const handleChangeHomeType = (event) => {
