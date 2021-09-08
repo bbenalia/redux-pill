@@ -3,6 +3,7 @@ import React from "react";
 import CheckBox from "../../components/CheckBox";
 import RangeSlider from "../../components/RangeSlider";
 import withLayout from "../../hoc/withLayout";
+import HouseListing from "../../components/HouseListing";
 
 // import RadioButton from "../../components/RadioButton";
 import SelectButton from "../../components/SelectButton";
@@ -183,7 +184,9 @@ function Dashboard() {
           </div>
         </div>
 
-        <div className="container mt-5 shadow-sm rounded p-3">Image</div>
+        <div className="container mt-5 shadow-sm rounded p-3">
+          <HouseListing />
+        </div>
       </div>
     </>
   );
