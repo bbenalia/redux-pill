@@ -12,7 +12,7 @@ import {
   fetchProducts,
   setFilteredProducts,
 } from "../../redux/products/actions";
-import { setHomeFilter } from "../../redux/filters/actions";
+import { setHomeFilter, setPriceFilter } from "../../redux/filters/actions";
 
 function Dashboard() {
   const { filters } = useSelector((state) => state.filters);
@@ -32,10 +32,10 @@ function Dashboard() {
     dispatch(setHomeFilter(obj));
   };
 
-  // const handleBedrooms = (event) => {
-  //   const bedroomObject = { room: ...room, event.target.value };
-  //   console.log(bedroomObject);
-  // };
+  const handleChangePrice = (_event, minVal, maxVal) => {
+    const obj = { min: minVal, max: maxVal };
+    dispatch(setPriceFilter(obj));
+  };
 
   const toggleSelect = (event) => {
     event.target.classList.toggle("unselected");
@@ -171,7 +171,11 @@ function Dashboard() {
 
             <div className="col-3">
               <h6>Price Range</h6>
-              <RangeSlider max={4000} min={0} />
+              <RangeSlider
+                max={500000}
+                min={0}
+                handleChange={handleChangePrice}
+              />
             </div>
 
             <div className="col-3">
