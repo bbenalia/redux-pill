@@ -5,13 +5,12 @@ import SearchIcon from "../SVGIcons/SearchIcon";
 function SearchBar() {
   const handleSubmit = (e) => {
     e.preventDefault();
+    // const searchValue = e.target[1].value;
   };
 
   return (
     <>
       <form
-        action="/"
-        method="get"
         className="m-2 border border-2 rounded-pill bg-warning"
         onSubmit={handleSubmit}
       >
