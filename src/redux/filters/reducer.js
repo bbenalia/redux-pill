@@ -1,15 +1,19 @@
 import INITIAL_STATE from "./state";
-import { FETCH_PRODUCTS, LOADING_PRODUCTS, ERROR_PRODUCTS } from "./types";
+import {
+  FILTER_BY_HOME,
+  LOADING_FILTER_DATA,
+  ERROR_FILTER_DATA,
+} from "./types";
 
 const reducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case FETCH_PRODUCTS:
-      return { ...state, status: "ok", data: action.payload };
+    case FILTER_BY_HOME:
+      return { ...state, status: "ok", typeOfHome: action.payload };
 
-    case LOADING_PRODUCTS:
+    case LOADING_FILTER_DATA:
       return { ...state, status: "loading" };
 
-    case ERROR_PRODUCTS:
+    case ERROR_FILTER_DATA:
       return { ...state, status: "error" };
 
     default:

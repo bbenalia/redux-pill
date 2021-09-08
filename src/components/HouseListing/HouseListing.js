@@ -80,8 +80,6 @@ export default function BasicTable() {
           ))}
         </TableBody>
       </Table>
-      {/* TODO: Remove: lo añadí para poder ver el final */}
-      {/* <div style={{ "min-height": "200px" }} /> */}
     </TableContainer>
   );
 }
