@@ -1,16 +1,16 @@
 export function getFilterParams(filters) {
-  //   const query = "?";
+  let query = "?";
 
-  //   for (const property in filters) {
-  //     console.log(`${property}: ${object[property]}`);
-  //   }
+  if (filters.type) {
+    Object.entries(filters.type).map(([key, value]) => {
+      if (value) query += `type=${key}&`;
+      return value;
+    });
+  }
 
-  const arr = Object.values(filters);
+  if (filters.search.length > 0) {
+    query += `q=${filters.search}&`;
+  }
 
-  const pr = arr.map((filter) => {
-    const arrFilters = Object.values(filter);
-    return arrFilters;
-  });
-
-  console.log("PPPPPRRR", pr);
+  return query;
 }

@@ -10,7 +10,7 @@ const reducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case FILTER_BY_HOME: {
       const {
-        filters: { typeOfHome },
+        filters: { type },
       } = state;
       const { filters } = state;
 
@@ -19,7 +19,7 @@ const reducer = (state = INITIAL_STATE, action) => {
         status: "ok",
         filters: {
           ...filters,
-          typeOfHome: { ...typeOfHome, ...action.payload },
+          type: { ...type, ...action.payload },
         },
       };
     }
@@ -29,7 +29,7 @@ const reducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         status: "ok",
-        filters: { ...filters, search: { q: action.payload } },
+        filters: { ...filters, search: action.payload },
       };
     }
 
