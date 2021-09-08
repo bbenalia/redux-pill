@@ -1,16 +1,16 @@
 const INITIAL_STATE = {
   status: "ok",
   filters: {
-    typeOfHome: {},
-    bedrooms: {},
-    bathrooms: {},
+    type: {},
+    room: {},
+    bath: {},
     equipment: {},
     condition: {},
     price: {
       min: "",
       max: "",
     },
-    publicationDate: {},
+    publication_date: {},
     moreFilters: {},
     search: {},
   },

@@ -64,14 +64,14 @@ function Dashboard() {
                     id="flat"
                     name="flat/apartment"
                     label="Flat/Apartment"
-                    checked={filters.typeOfHome["flat/apartment"]}
+                    checked={filters.type["flat/apartment"]}
                     handleChange={handleChangeHomeType}
                   />
                   <CheckBox
                     id="duplex"
                     name="duplex"
                     label="Duplex"
-                    checked={filters.typeOfHome.duplex}
+                    checked={filters.type.duplex}
                     handleChange={handleChangeHomeType}
                   />
                 </div>
@@ -80,14 +80,14 @@ function Dashboard() {
                     id="house"
                     name="house"
                     label="House"
-                    checked={filters.typeOfHome.house}
+                    checked={filters.type.house}
                     handleChange={handleChangeHomeType}
                   />
                   <CheckBox
                     id="penthouse"
                     name="penthouse"
                     label="Penthouse"
-                    checked={filters.typeOfHome.penthouse}
+                    checked={filters.type.penthouse}
                     handleChange={handleChangeHomeType}
                   />
                 </div>
