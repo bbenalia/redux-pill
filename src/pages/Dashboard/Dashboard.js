@@ -15,25 +15,30 @@ import {
 import { setHomeFilter } from "../../redux/filters/actions";
 
 function Dashboard() {
-  const toggleSelect = (event) => {
-    event.target.classList.toggle("unselected");
-  };
-
   const { filters } = useSelector((state) => state.filters);
 
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(setFilteredProducts(filters));
-  }, [filters]);
+  }, [dispatch, filters]);
 
   useEffect(() => {
     dispatch(fetchProducts());
-  }, []);
+  }, [dispatch]);
 
   const handleChangeHomeType = (event) => {
     const obj = { [event.target.name]: event.target.checked };
     dispatch(setHomeFilter(obj));
+  };
+
+  // const handleBedrooms = (event) => {
+  //   const bedroomObject = { room: ...room, event.target.value };
+  //   console.log(bedroomObject);
+  // };
+
+  const toggleSelect = (event) => {
+    event.target.classList.toggle("unselected");
   };
 
   return (
@@ -96,7 +101,12 @@ function Dashboard() {
 
             <div className="col-3">
               <h6>Bedrooms</h6>
-              <SelectButton unselected value={0} onClick={toggleSelect}>
+              <SelectButton
+                unselected
+                value={0}
+                name="room1"
+                onClick={toggleSelect}
+              >
                 0 (studio flat)
               </SelectButton>
               <SelectButton unselected value={1} onClick={toggleSelect}>

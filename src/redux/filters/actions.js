@@ -12,6 +12,11 @@ export const setHomeFilter = (homeFilter) => ({
   payload: homeFilter,
 });
 
+export const filterBySearch = (search) => ({
+  type: FILTER_BY_SEARCH,
+  payload: search,
+});
+
 export const fetchBySearch = (search) => {
   return async (dispatch) => {
     dispatch({ type: LOADING_FILTER_DATA });

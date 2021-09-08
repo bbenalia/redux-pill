@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -15,11 +15,11 @@ import CoinIcon from "../SVGIcons/CoinIcon";
 
 export default function BasicTable() {
   const { status, data } = useSelector((state) => state.products);
-  const { status: filterStatus, filters } = useSelector(
-    (state) => state.filters,
-  );
-  console.log(filters);
-  console.log(filterStatus);
+  const { filters } = useSelector((state) => state.filters);
+
+  useEffect(() => {
+    console.log("HouseListing ->", filters);
+  }, [filters]);
 
   return (
     <TableContainer component={Paper} className="mb-5">

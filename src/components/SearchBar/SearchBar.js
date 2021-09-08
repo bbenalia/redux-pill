@@ -1,11 +1,16 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+import { filterBySearch } from "../../redux/filters/actions";
 
 import SearchIcon from "../SVGIcons/SearchIcon";
 
 function SearchBar() {
+  const dispatch = useDispatch();
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    // const searchValue = e.target[1].value;
+    const searchValue = e.target[1].value;
+    dispatch(filterBySearch(searchValue));
   };
 
   return (

@@ -24,8 +24,14 @@ const reducer = (state = INITIAL_STATE, action) => {
       };
     }
 
-    case FILTER_BY_SEARCH:
-      return { ...state, status: "ok", search: action.payload };
+    case FILTER_BY_SEARCH: {
+      const { filters } = state;
+      return {
+        ...state,
+        status: "ok",
+        filters: { ...filters, search: { q: action.payload } },
+      };
+    }
 
     case LOADING_FILTER_DATA:
       return { ...state, status: "loading" };
