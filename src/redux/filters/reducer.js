@@ -29,7 +29,7 @@ const reducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         status: "ok",
-        filters: { ...filters, search: { q: action.payload } },
+        filters: { ...filters, search: action.payload },
       };
     }
 

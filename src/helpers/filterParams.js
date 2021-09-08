@@ -8,5 +8,9 @@ export function getFilterParams(filters) {
     });
   }
 
+  if (filters.search.length > 0) {
+    query += `q=${filters.search}&`;
+  }
+
   return query;
 }
