@@ -12,8 +12,8 @@ export default function RangeSlider({
   ...props
 }) {
   const [sliderValue, setSliderValue] = useState([0, 100]);
-  const [minValue, setMinValue] = useState([20, 80]);
-  const [maxValue, setMaxValue] = useState([20, 80]);
+  const [minValue, setMinValue] = useState(min);
+  const [maxValue, setMaxValue] = useState(max);
 
   const handleChangeSlider = (_event, newValue) => {
     const minVal = (max / 100) * newValue[0];
@@ -90,7 +90,7 @@ export default function RangeSlider({
               type="number"
               value={minValue}
               className="form-control"
-              placeholder="0.00"
+              placeholder={min}
               aria-label="min-price"
               aria-describedby="basic-addon1"
               onChange={handleChangeMinimum}
@@ -105,7 +105,7 @@ export default function RangeSlider({
               type="number"
               value={maxValue}
               className="form-control"
-              placeholder="1000.00"
+              placeholder={`${max}`}
               aria-label="max-price"
               aria-describedby="basic-addon2"
               onChange={handleChangeMaximum}
