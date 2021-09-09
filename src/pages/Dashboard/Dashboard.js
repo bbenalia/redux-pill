@@ -6,7 +6,6 @@ import CheckBox from "../../components/CheckBox";
 import RangeSlider from "../../components/RangeSlider";
 import withLayout from "../../hoc/withLayout";
 import HouseListing from "../../components/HouseListing";
-
 import SelectButton from "../../components/SelectButton";
 import SearchBar from "../../components/SearchBar";
 import InputSelect from "../../components/InputSelect";
@@ -14,7 +13,10 @@ import {
   fetchProducts,
   setFilteredProducts,
 } from "../../redux/products/actions";
-import { setHomeFilter, setPriceFilter } from "../../redux/filters/actions";
+import {
+  setCheckboxFilters,
+  setPriceFilter,
+} from "../../redux/filters/actions";
 import { getFilterParams } from "../../helpers/filterParams";
 import useQuery from "../../hooks/useQuery";
 
@@ -33,16 +35,15 @@ function Dashboard() {
 
   useEffect(() => {
     const queryParam = queryString.toString().replace("%2F", "/");
-
     if (queryParam) history.push(`?${queryParam}`);
 
     dispatch(fetchProducts());
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dispatch]);
 
-  const handleChangeHomeType = (event) => {
+  const handleChangeCheckbox = (event, filterType) => {
     const obj = { [event.target.name]: event.target.checked };
-    dispatch(setHomeFilter(obj));
+    dispatch(setCheckboxFilters(obj, filterType));
   };
 
   const handleChangePrice = (_event, minVal, maxVal) => {
@@ -82,15 +83,17 @@ function Dashboard() {
                     id="flat"
                     name="flat/apartment"
                     label="Flat/Apartment"
+                    filter="type"
                     checked={filters.type["flat/apartment"]}
-                    handleChange={handleChangeHomeType}
+                    handleChange={handleChangeCheckbox}
                   />
                   <CheckBox
                     id="duplex"
                     name="duplex"
                     label="Duplex"
+                    filter="type"
                     checked={filters.type.duplex}
-                    handleChange={handleChangeHomeType}
+                    handleChange={handleChangeCheckbox}
                   />
                 </div>
                 <div className="col">
@@ -98,15 +101,17 @@ function Dashboard() {
                     id="house"
                     name="house"
                     label="House"
+                    filter="type"
                     checked={filters.type.house}
-                    handleChange={handleChangeHomeType}
+                    handleChange={handleChangeCheckbox}
                   />
                   <CheckBox
                     id="penthouse"
                     name="penthouse"
                     label="Penthouse"
+                    filter="type"
                     checked={filters.type.penthouse}
-                    handleChange={handleChangeHomeType}
+                    handleChange={handleChangeCheckbox}
                   />
                 </div>
               </div>
@@ -163,13 +168,23 @@ function Dashboard() {
               <h6>Condition</h6>
               <div className="row">
                 <div className="col">
-                  <CheckBox id="new-homes" name="condition" label="New homes" />
+                  <CheckBox
+                    id="new-homes"
+                    name="condition"
+                    label="New homes"
+                    filter="condition"
+                    checked={filters.condition.new}
+                    handleChange={handleChangeCheckbox}
+                  />
                 </div>
                 <div className="col">
                   <CheckBox
                     id="good-condition"
                     name="condition"
                     label="Good condition"
+                    filter="condition"
+                    checked={filters.condition.good}
+                    handleChange={handleChangeCheckbox}
                   />
                 </div>
                 <div className="col">
@@ -177,6 +192,9 @@ function Dashboard() {
                     id="needs-renovation"
                     name="condition"
                     label="Needs renovation"
+                    filter="condition"
+                    checked={filters.condition.renovation}
+                    handleChange={handleChangeCheckbox}
                   />
                 </div>
               </div>
@@ -194,8 +212,9 @@ function Dashboard() {
             <div className="col-3">
               <h6>Publication Date</h6>
               <InputSelect
-                defaultOption="Last 48 hours"
-                options={["Option 1", "Option 2"]}
+                defaultOption=""
+                options={["Last 48 hours", "Last week", "Last year"]}
+                // handleChange={handleChangeDate}
               />
             </div>
 
@@ -203,13 +222,34 @@ function Dashboard() {
               <h6>More Filters</h6>
               <div className="row">
                 <div className="col">
-                  <CheckBox id="pets" name="more-filters" label="Pets" />
+                  <CheckBox
+                    id="pets"
+                    name="more-filters"
+                    label="Pets"
+                    filter="moreFilters"
+                    // checked={filters.more.pet}
+                    handleChange={handleChangeCheckbox}
+                  />
                 </div>
                 <div className="col">
-                  <CheckBox id="lift" name="more-filters" label="Lift" />
+                  <CheckBox
+                    id="lift"
+                    name="more-filters"
+                    label="Lift"
+                    filter="moreFilters"
+                    // checked={filters.more.lift}
+                    handleChange={handleChangeCheckbox}
+                  />
                 </div>
                 <div className="col">
-                  <CheckBox id="garden" name="more-filters" label="Garden" />
+                  <CheckBox
+                    id="garden"
+                    name="more-filters"
+                    label="Garden"
+                    filter="moreFilters"
+                    // checked={filters.more.garden}
+                    handleChange={handleChangeCheckbox}
+                  />
                 </div>
               </div>
 
@@ -219,10 +259,20 @@ function Dashboard() {
                     id="air-conditioning"
                     name="more-filters"
                     label="Air conditioning"
+                    filter="moreFilters"
+                    // checked={filters.more.air_conditioning}
+                    handleChange={handleChangeCheckbox}
                   />
                 </div>
                 <div className="col">
-                  <CheckBox id="terrace" name="more-filters" label="Terrace" />
+                  <CheckBox
+                    id="terrace"
+                    name="more-filters"
+                    label="Terrace"
+                    filter="moreFilters"
+                    // checked={filters.more.terrace}
+                    handleChange={handleChangeCheckbox}
+                  />
                 </div>
               </div>
 
@@ -232,6 +282,9 @@ function Dashboard() {
                     id="swimming-pool"
                     name="more-filters"
                     label="Swimming pool"
+                    filter="moreFilters"
+                    // checked={filters.more.swimming_pool}
+                    handleChange={handleChangeCheckbox}
                   />
                 </div>
               </div>
