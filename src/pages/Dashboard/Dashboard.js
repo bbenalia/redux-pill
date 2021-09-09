@@ -21,6 +21,7 @@ import {
   setCheckboxFilters,
   // setFilterByUrl,
   setPriceFilter,
+  setSelectFilters,
 } from "../../redux/filters/actions";
 
 import { getFilterParams } from "../../helpers/filterParams";
@@ -34,7 +35,6 @@ function Dashboard() {
 
   useEffect(() => {
     dispatch(setFilteredProducts(debouncedFilters));
-
     const query = getFilterParams(debouncedFilters);
     history.push(query);
   }, [dispatch, debouncedFilters, history]);
@@ -94,6 +94,12 @@ function Dashboard() {
   const handleChangePrice = (_event, minVal, maxVal) => {
     const obj = { min: minVal, max: maxVal };
     dispatch(setPriceFilter(obj));
+  };
+
+  const handleChangeSelect = (value, filterType) => {
+    // const obj = { min: minVal, max: maxVal };
+    dispatch(setSelectFilters(value, filterType));
+    // console.log(event, filterType);
   };
 
   const handleChangeButtons = (event) => {
@@ -242,7 +248,10 @@ function Dashboard() {
               <h6>Equipment</h6>
               <InputSelect
                 defaultOption="Indifferent"
-                options={["Option 1", "Option 2"]}
+                options={["Furnished", "Unfurnished"]}
+                filter="equipment"
+                value={filters.equipment}
+                handleChange={handleChangeSelect}
               />
             </div>
           </div>
@@ -297,8 +306,10 @@ function Dashboard() {
               <h6>Publication Date</h6>
               <InputSelect
                 defaultOption=""
-                options={["Last 48 hours", "Last week", "Last year"]}
-                // handleChange={handleChangeDate}
+                options={["Last 24 hours", "Last week"]}
+                filter="publication_date"
+                value={filters.publication_date}
+                handleChange={handleChangeSelect}
               />
             </div>
 

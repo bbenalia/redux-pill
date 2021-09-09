@@ -8,6 +8,8 @@ import {
   FILTER_BY_SEARCH,
   FILTER_BY_ROOM,
   FILTER_BY_BATH,
+  FILTER_BY_DATE,
+  FILTER_BY_EQUIPMENT,
   LOADING_FILTER_DATA,
   ERROR_FILTER_DATA,
   SET_FILTER_BY_URL,
@@ -29,6 +31,22 @@ export const setCheckboxFilters = (data, filterType) => {
   if (filterType === "moreFilters")
     return {
       type: FILTER_BY_OTHER,
+      payload: data,
+    };
+
+  return { type: ERROR_FILTER_DATA };
+};
+
+export const setSelectFilters = (data, filterType) => {
+  if (filterType === "publication_date")
+    return {
+      type: FILTER_BY_DATE,
+      payload: data,
+    };
+
+  if (filterType === "equipment")
+    return {
+      type: FILTER_BY_EQUIPMENT,
       payload: data,
     };
 

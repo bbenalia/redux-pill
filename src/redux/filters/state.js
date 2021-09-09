@@ -10,7 +10,7 @@ const INITIAL_STATE = {
       min: "",
       max: "",
     },
-    publication_date: {},
+    publication_date: "",
     moreFilters: {},
     search: {},
   },
