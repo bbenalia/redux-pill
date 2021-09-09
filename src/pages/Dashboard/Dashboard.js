@@ -19,12 +19,13 @@ import {
 import {
   setButtonsFilters,
   setCheckboxFilters,
-  // setFilterByUrl,
+  setFilterByUrl,
   setPriceFilter,
   setSelectFilters,
 } from "../../redux/filters/actions";
 
 import { getFilterParams } from "../../helpers/filterParams";
+import getFiltersFromQueryParams from "../../helpers/queryParamsFilter";
 
 function Dashboard() {
   const { filters } = useSelector((state) => state.filters);
@@ -42,46 +43,9 @@ function Dashboard() {
   useEffect(() => {
     const queryParam = queryString.toString().replace("%2F", "/");
     if (queryParam) history.push(`?${queryParam}`);
-
-    // ! Get the url pairs
     const entriesURL = queryString.entries();
-
-    const obj = {
-      type: {},
-      room: {},
-      bath: {},
-      equipment: {},
-      condition: {},
-      price: {
-        min: "",
-        max: "",
-      },
-      publication_date: {},
-      moreFilters: {},
-      search: {},
-    };
-    // eslint-disable-next-line no-restricted-syntax
-    for (const pair of entriesURL) {
-      // eslint-disable-next-line no-new-object
-      if (
-        pair[0] !== "type" &&
-        pair[0] !== "room" &&
-        pair[0] !== "bath" &&
-        pair[0] !== "equipment" &&
-        pair[0] !== "condition" &&
-        pair[0] !== "price" &&
-        pair[0] !== "publication_date" &&
-        pair[0] !== "search"
-      ) {
-        obj.moreFilters = { ...obj.moreFilters, [pair[0]]: pair[1] };
-      } else {
-        obj[pair[0]] = { ...obj[pair[0]], [pair[1]]: true };
-        console.log(obj);
-      }
-    }
-
-    // dispatch(setFilterByUrl(parent));
-
+    const queryFilters = getFiltersFromQueryParams(entriesURL);
+    dispatch(setFilterByUrl(queryFilters));
     dispatch(fetchProducts());
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dispatch]);
@@ -97,15 +61,12 @@ function Dashboard() {
   };
 
   const handleChangeSelect = (value, filterType) => {
-    // const obj = { min: minVal, max: maxVal };
     dispatch(setSelectFilters(value, filterType));
-    // console.log(event, filterType);
   };
 
-  const handleChangeButtons = (event) => {
-    event.target.classList.toggle("unselected");
+  const handleChangeButtons = (event, value) => {
     const filterType = event.target.attributes.filter.value;
-    const obj = { [event.target.value]: event.target.classList.length === 3 };
+    const obj = { [event.target.value]: value };
     dispatch(setButtonsFilters(obj, filterType));
   };
 
@@ -174,43 +135,43 @@ function Dashboard() {
             <div className="col-3">
               <h6>Bedrooms</h6>
               <SelectButton
-                unselected
                 value={0}
                 name="room1"
                 filter="room"
-                onClick={handleChangeButtons}
+                checked={filters.room[0]}
+                handleClick={handleChangeButtons}
               >
                 0 (studio flat)
               </SelectButton>
               <SelectButton
-                unselected
                 value={1}
                 filter="room"
-                onClick={handleChangeButtons}
+                checked={filters.room[1]}
+                handleClick={handleChangeButtons}
               >
                 1
               </SelectButton>
               <SelectButton
-                unselected
                 value={2}
                 filter="room"
-                onClick={handleChangeButtons}
+                checked={filters.room[2]}
+                handleClick={handleChangeButtons}
               >
                 2
               </SelectButton>
               <SelectButton
-                unselected
                 value={3}
                 filter="room"
-                onClick={handleChangeButtons}
+                checked={filters.room[3]}
+                handleClick={handleChangeButtons}
               >
                 3
               </SelectButton>
               <SelectButton
-                unselected
                 value={4}
                 filter="room"
-                onClick={handleChangeButtons}
+                checked={filters.room[4]}
+                handleClick={handleChangeButtons}
               >
                 4 or +
               </SelectButton>
@@ -219,26 +180,26 @@ function Dashboard() {
             <div className="col-3">
               <h6>Bathrooms</h6>
               <SelectButton
-                unselected
                 value={1}
                 filter="bath"
-                onClick={handleChangeButtons}
+                checked={filters.bath[1]}
+                handleClick={handleChangeButtons}
               >
                 1
               </SelectButton>
               <SelectButton
-                unselected
                 value={2}
                 filter="bath"
-                onClick={handleChangeButtons}
+                checked={filters.bath[2]}
+                handleClick={handleChangeButtons}
               >
                 2
               </SelectButton>
               <SelectButton
-                unselected
                 value={3}
                 filter="bath"
-                onClick={handleChangeButtons}
+                checked={filters.bath[3]}
+                handleClick={handleChangeButtons}
               >
                 3 or +
               </SelectButton>
