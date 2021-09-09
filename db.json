@@ -47,6 +47,7 @@
       "contact_mail": "pepito@assemblerschool.com",
       "contact_phone": "+344767574657",
       "condition": "new",
+      "equipment": "furnished",
       "room": 2,
       "bath": 2,
       "size": 67,
@@ -56,7 +57,7 @@
       "air_conditioning": true,
       "swimming_pool": false,
       "terrace": true,
-      "publication_date": "2020/12/01 01:01:01",
+      "publication_date": "2021-09-09T13:00:00.000Z",
       "image": "https://images.unsplash.com/photo-1580587771525-78b9dba3b914?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8aG91c2V8ZW58MHx8MHx8&ixlib=rb-1.2.1&w=1000&q=80"
     },
     {
@@ -72,6 +73,7 @@
       "contact_mail": "pepito@assemblerschool.com",
       "contact_phone": "+344767574657",
       "condition": "new",
+      "equipment": "furnished",
       "room": 5,
       "bath": 3,
       "size": 200,
@@ -81,7 +83,7 @@
       "air_conditioning": true,
       "swimming_pool": false,
       "terrace": true,
-      "publication_date": "2020/12/01 01:01:01",
+      "publication_date": "2021-09-08T08:48:00.000Z",
       "image": "https://images.unsplash.com/photo-1580587771525-78b9dba3b914?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8aG91c2V8ZW58MHx8MHx8&ixlib=rb-1.2.1&w=1000&q=80"
     },
     {
@@ -97,6 +99,7 @@
       "contact_mail": "pepito@assemblerschool.com",
       "contact_phone": "+344767574657",
       "condition": "new",
+      "equipment": "furnished",
       "room": 2,
       "bath": 1,
       "size": 67,
@@ -106,7 +109,7 @@
       "air_conditioning": true,
       "swimming_pool": false,
       "terrace": true,
-      "publication_date": "2020/12/01 01:01:01",
+      "publication_date": "2021-09-07T08:48:00.000Z",
       "image": "https://images.unsplash.com/photo-1580587771525-78b9dba3b914?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8aG91c2V8ZW58MHx8MHx8&ixlib=rb-1.2.1&w=1000&q=80"
     },
     {
@@ -122,6 +125,7 @@
       "contact_mail": "pepito@assemblerschool.com",
       "contact_phone": "+344767574657",
       "condition": "good",
+      "equipment": "unfurnished",
       "room": 2,
       "bath": 1,
       "size": 67,
@@ -131,7 +135,7 @@
       "air_conditioning": true,
       "swimming_pool": true,
       "terrace": true,
-      "publication_date": "2020/12/01 01:01:01",
+      "publication_date": "2021-08-06T08:48:00.000Z",
       "image": "https://images.unsplash.com/photo-1580587771525-78b9dba3b914?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8aG91c2V8ZW58MHx8MHx8&ixlib=rb-1.2.1&w=1000&q=80"
     }
   ],

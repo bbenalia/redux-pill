@@ -56,5 +56,27 @@ export function getFilterParams(filters) {
       return value;
     });
   }
+
+  if (filters.equipment.length > 0) {
+    query += `equipment=${filters.equipment}&`;
+    return query;
+  }
+
+  if (filters.publication_date.length) {
+    const now = new Date();
+
+    if (filters.publication_date === "Last 24 hours") {
+      now.setDate(now.getDate() - 1);
+      const isoDate = now.toISOString();
+      query += `publication_date_gte=${isoDate}`;
+    }
+
+    if (filters.publication_date === "Last week") {
+      now.setDate(now.getDate() - 7);
+      const isoDate = now.toISOString();
+      query += `publication_date_gte=${isoDate}`;
+    }
+  }
+
   return query;
 }
