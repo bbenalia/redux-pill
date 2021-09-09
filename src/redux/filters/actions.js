@@ -10,6 +10,7 @@ import {
   FILTER_BY_BATH,
   LOADING_FILTER_DATA,
   ERROR_FILTER_DATA,
+  SET_FILTER_BY_URL,
 } from "./types";
 
 export const setCheckboxFilters = (data, filterType) => {
@@ -54,20 +55,17 @@ export const filterBySearch = (search) => ({
   payload: search,
 });
 
-// export const setRoomFilter = (room) => ({
-//   type: FILTER_BY_ROOM,
-//   payload: room,
-// });
-
-// export const setBathFilter = (bath) => ({
-//   type: FILTER_BY_BATH,
-//   payload: bath,
-// });
-
 export const setPriceFilter = (priceFilter) => ({
   type: FILTER_BY_PRICE,
   payload: priceFilter,
 });
+
+export const setFilterByUrl = (data) => {
+  return {
+    type: SET_FILTER_BY_URL,
+    payload: data,
+  };
+};
 
 export const fetchBySearch = (search) => {
   return async (dispatch) => {

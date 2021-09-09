@@ -19,6 +19,7 @@ import {
 import {
   setButtonsFilters,
   setCheckboxFilters,
+  // setFilterByUrl,
   setPriceFilter,
 } from "../../redux/filters/actions";
 
@@ -41,6 +42,18 @@ function Dashboard() {
   useEffect(() => {
     const queryParam = queryString.toString().replace("%2F", "/");
     if (queryParam) history.push(`?${queryParam}`);
+
+    // ! Get the url pairs
+    const entriesURL = queryString.entries();
+
+    const object = {};
+    // eslint-disable-next-line no-restricted-syntax
+    for (const pair of entriesURL) {
+      object[pair[0]] = pair[1];
+    }
+    console.log(object);
+
+    // dispatch(setFilterByUrl(object));
 
     dispatch(fetchProducts());
     // eslint-disable-next-line react-hooks/exhaustive-deps
