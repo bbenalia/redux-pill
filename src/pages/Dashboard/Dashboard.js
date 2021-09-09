@@ -1,6 +1,8 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
+import useQuery from "../../hooks/useQuery";
+import useDebounce from "../../hooks/useDebounce";
 
 import CheckBox from "../../components/CheckBox";
 import RangeSlider from "../../components/RangeSlider";
@@ -9,11 +11,11 @@ import HouseListing from "../../components/HouseListing";
 import SelectButton from "../../components/SelectButton";
 import SearchBar from "../../components/SearchBar";
 import InputSelect from "../../components/InputSelect";
+
 import {
   fetchProducts,
   setFilteredProducts,
 } from "../../redux/products/actions";
-
 import {
   setButtonsFilters,
   setCheckboxFilters,
@@ -21,20 +23,20 @@ import {
 } from "../../redux/filters/actions";
 
 import { getFilterParams } from "../../helpers/filterParams";
-import useQuery from "../../hooks/useQuery";
 
 function Dashboard() {
   const { filters } = useSelector((state) => state.filters);
   const dispatch = useDispatch();
   const history = useHistory();
   const queryString = useQuery();
+  const debouncedFilters = useDebounce(filters, 500);
 
   useEffect(() => {
-    dispatch(setFilteredProducts(filters));
+    dispatch(setFilteredProducts(debouncedFilters));
 
-    const query = getFilterParams(filters);
+    const query = getFilterParams(debouncedFilters);
     history.push(query);
-  }, [dispatch, filters, history]);
+  }, [dispatch, debouncedFilters, history]);
 
   useEffect(() => {
     const queryParam = queryString.toString().replace("%2F", "/");
