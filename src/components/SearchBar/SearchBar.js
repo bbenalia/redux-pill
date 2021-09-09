@@ -1,16 +1,21 @@
 import React from "react";
 import { useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
 import { filterBySearch } from "../../redux/filters/actions";
 
 import SearchIcon from "../SVGIcons/SearchIcon";
 
 function SearchBar() {
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    const currentLocation = window.location.href;
     const searchValue = e.target[1].value;
     dispatch(filterBySearch(searchValue));
+    if (currentLocation === "http://localhost:5000/")
+      history.push("/dashboard");
   };
 
   return (
