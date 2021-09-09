@@ -17,7 +17,7 @@ export default function BasicTable() {
   const { status, data } = useSelector((state) => state.products);
 
   return (
-    <TableContainer component={Paper} className="mb-5">
+    <TableContainer component={Paper}>
       {status === "ok" && (
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
           <TableHead>

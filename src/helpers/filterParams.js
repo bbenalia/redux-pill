@@ -8,6 +8,32 @@ export function getFilterParams(filters) {
     });
   }
 
+  if (filters.room) {
+    Object.entries(filters.room).map(([key, value]) => {
+      if (value) {
+        if (key >= 4) {
+          query += `room_gte=${key}&`;
+        } else {
+          query += `room=${key}&`;
+        }
+      }
+      return value;
+    });
+  }
+
+  if (filters.bath) {
+    Object.entries(filters.bath).map(([key, value]) => {
+      if (value) {
+        if (key >= 3) {
+          query += `bath_gte=${key}&`;
+        } else {
+          query += `bath=${key}&`;
+        }
+      }
+      return value;
+    });
+  }
+
   if (filters.search.length > 0) {
     query += `q=${filters.search}&`;
   }
@@ -30,6 +56,5 @@ export function getFilterParams(filters) {
       return value;
     });
   }
-
   return query;
 }

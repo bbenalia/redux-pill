@@ -13,10 +13,13 @@ import {
   fetchProducts,
   setFilteredProducts,
 } from "../../redux/products/actions";
+
 import {
+  setButtonsFilters,
   setCheckboxFilters,
   setPriceFilter,
 } from "../../redux/filters/actions";
+
 import { getFilterParams } from "../../helpers/filterParams";
 import useQuery from "../../hooks/useQuery";
 
@@ -51,8 +54,11 @@ function Dashboard() {
     dispatch(setPriceFilter(obj));
   };
 
-  const toggleSelect = (event) => {
+  const handleChangeButtons = (event) => {
     event.target.classList.toggle("unselected");
+    const filterType = event.target.attributes.filter.value;
+    const obj = { [event.target.value]: event.target.classList.length === 3 };
+    dispatch(setButtonsFilters(obj, filterType));
   };
 
   return (
@@ -123,33 +129,69 @@ function Dashboard() {
                 unselected
                 value={0}
                 name="room1"
-                onClick={toggleSelect}
+                filter="room"
+                onClick={handleChangeButtons}
               >
                 0 (studio flat)
               </SelectButton>
-              <SelectButton unselected value={1} onClick={toggleSelect}>
+              <SelectButton
+                unselected
+                value={1}
+                filter="room"
+                onClick={handleChangeButtons}
+              >
                 1
               </SelectButton>
-              <SelectButton unselected value={2} onClick={toggleSelect}>
+              <SelectButton
+                unselected
+                value={2}
+                filter="room"
+                onClick={handleChangeButtons}
+              >
                 2
               </SelectButton>
-              <SelectButton unselected value={3} onClick={toggleSelect}>
+              <SelectButton
+                unselected
+                value={3}
+                filter="room"
+                onClick={handleChangeButtons}
+              >
                 3
               </SelectButton>
-              <SelectButton unselected value={4} onClick={toggleSelect}>
+              <SelectButton
+                unselected
+                value={4}
+                filter="room"
+                onClick={handleChangeButtons}
+              >
                 4 or +
               </SelectButton>
             </div>
 
             <div className="col-3">
               <h6>Bathrooms</h6>
-              <SelectButton unselected value={1} onClick={toggleSelect}>
+              <SelectButton
+                unselected
+                value={1}
+                filter="bath"
+                onClick={handleChangeButtons}
+              >
                 1
               </SelectButton>
-              <SelectButton unselected value={2} onClick={toggleSelect}>
+              <SelectButton
+                unselected
+                value={2}
+                filter="bath"
+                onClick={handleChangeButtons}
+              >
                 2
               </SelectButton>
-              <SelectButton unselected value={3} onClick={toggleSelect}>
+              <SelectButton
+                unselected
+                value={3}
+                filter="bath"
+                onClick={handleChangeButtons}
+              >
                 3 or +
               </SelectButton>
             </div>
@@ -292,7 +334,7 @@ function Dashboard() {
           </div>
         </div>
 
-        <div className="container mt-5 shadow-sm rounded p-3">
+        <div className="container mt-5 mb-5 shadow-sm rounded p-3">
           <HouseListing />
         </div>
       </div>

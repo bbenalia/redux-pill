@@ -48,7 +48,7 @@
       "contact_phone": "+344767574657",
       "condition": "new",
       "room": 2,
-      "bath": 1,
+      "bath": 2,
       "size": 67,
       "price": 400000,
       "pet": false,
@@ -111,7 +111,7 @@
     },
     {
       "id": 4,
-      "street": "nueva",
+      "street": "0 room",
       "number": 10,
       "city": "Molins de Rei",
       "province": "Barcelona",
