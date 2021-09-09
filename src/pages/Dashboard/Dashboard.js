@@ -46,14 +46,22 @@ function Dashboard() {
     // ! Get the url pairs
     const entriesURL = queryString.entries();
 
-    const object = {};
     // eslint-disable-next-line no-restricted-syntax
     for (const pair of entriesURL) {
-      object[pair[0]] = pair[1];
+      // eslint-disable-next-line no-new-object
+      if (pair[0] === "type") {
+        const type = {};
+        type[pair[1]] = true;
+        console.log(type);
+      }
+      if (pair[0] === "room") {
+        const room = {};
+        room[pair[1]] = true;
+      }
     }
-    console.log(object);
+    // console.log(type);
 
-    // dispatch(setFilterByUrl(object));
+    // dispatch(setFilterByUrl(parent));
 
     dispatch(fetchProducts());
     // eslint-disable-next-line react-hooks/exhaustive-deps

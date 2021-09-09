@@ -116,7 +116,7 @@ const reducer = (state = INITIAL_STATE, action) => {
     }
 
     case SET_FILTER_BY_URL: {
-      console.log(action.payload[0]);
+      console.log(action.payload);
       // const { filters } = state;
       return {
         ...state,
