@@ -259,6 +259,8 @@ function Dashboard() {
               <RangeSlider
                 max={500000}
                 min={0}
+                propMinValue={filters.price.min}
+                propMaxValue={filters.price.max}
                 handleChange={handleChangePrice}
               />
             </div>
