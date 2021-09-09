@@ -13,11 +13,13 @@ import {
   fetchProducts,
   setFilteredProducts,
 } from "../../redux/products/actions";
+
 import {
   setButtonsFilters,
   setCheckboxFilters,
   setPriceFilter,
 } from "../../redux/filters/actions";
+
 import { getFilterParams } from "../../helpers/filterParams";
 import useQuery from "../../hooks/useQuery";
 
@@ -210,7 +212,7 @@ function Dashboard() {
                 <div className="col">
                   <CheckBox
                     id="new-homes"
-                    name="condition"
+                    name="new"
                     label="New homes"
                     filter="condition"
                     checked={filters.condition.new}
@@ -220,7 +222,7 @@ function Dashboard() {
                 <div className="col">
                   <CheckBox
                     id="good-condition"
-                    name="condition"
+                    name="good"
                     label="Good condition"
                     filter="condition"
                     checked={filters.condition.good}
@@ -230,7 +232,7 @@ function Dashboard() {
                 <div className="col">
                   <CheckBox
                     id="needs-renovation"
-                    name="condition"
+                    name="renovation"
                     label="Needs renovation"
                     filter="condition"
                     checked={filters.condition.renovation}
@@ -264,30 +266,30 @@ function Dashboard() {
                 <div className="col">
                   <CheckBox
                     id="pets"
-                    name="more-filters"
+                    name="pet"
                     label="Pets"
                     filter="moreFilters"
-                    // checked={filters.more.pet}
+                    checked={filters.moreFilters.pet}
                     handleChange={handleChangeCheckbox}
                   />
                 </div>
                 <div className="col">
                   <CheckBox
                     id="lift"
-                    name="more-filters"
+                    name="lift"
                     label="Lift"
                     filter="moreFilters"
-                    // checked={filters.more.lift}
+                    checked={filters.moreFilters.lift}
                     handleChange={handleChangeCheckbox}
                   />
                 </div>
                 <div className="col">
                   <CheckBox
                     id="garden"
-                    name="more-filters"
+                    name="garden"
                     label="Garden"
                     filter="moreFilters"
-                    // checked={filters.more.garden}
+                    checked={filters.moreFilters.garden}
                     handleChange={handleChangeCheckbox}
                   />
                 </div>
@@ -297,20 +299,20 @@ function Dashboard() {
                 <div className="col-8">
                   <CheckBox
                     id="air-conditioning"
-                    name="more-filters"
+                    name="air_conditioning"
                     label="Air conditioning"
                     filter="moreFilters"
-                    // checked={filters.more.air_conditioning}
+                    checked={filters.moreFilters.air_conditioning}
                     handleChange={handleChangeCheckbox}
                   />
                 </div>
                 <div className="col">
                   <CheckBox
                     id="terrace"
-                    name="more-filters"
+                    name="terrace"
                     label="Terrace"
                     filter="moreFilters"
-                    // checked={filters.more.terrace}
+                    checked={filters.moreFilters.terrace}
                     handleChange={handleChangeCheckbox}
                   />
                 </div>
@@ -320,10 +322,10 @@ function Dashboard() {
                 <div className="col">
                   <CheckBox
                     id="swimming-pool"
-                    name="more-filters"
+                    name="swimming_pool"
                     label="Swimming pool"
                     filter="moreFilters"
-                    // checked={filters.more.swimming_pool}
+                    checked={filters.moreFilters.swimming_pool}
                     handleChange={handleChangeCheckbox}
                   />
                 </div>
