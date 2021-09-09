@@ -11,6 +11,7 @@ import {
   LOADING_FILTER_DATA,
   ERROR_FILTER_DATA,
   FILTER_BY_BATH,
+  FILTER_BY_EQUIPMENT,
 } from "./types";
 
 const reducer = (state = INITIAL_STATE, action) => {
@@ -43,6 +44,18 @@ const reducer = (state = INITIAL_STATE, action) => {
         filters: {
           ...filters,
           condition: { ...condition, ...action.payload },
+        },
+      };
+    }
+
+    case FILTER_BY_EQUIPMENT: {
+      const { filters } = state;
+      return {
+        ...state,
+        status: "ok",
+        filters: {
+          ...filters,
+          equipment: action.payload,
         },
       };
     }

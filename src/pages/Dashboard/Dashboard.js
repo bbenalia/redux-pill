@@ -207,7 +207,7 @@ function Dashboard() {
               <h6>Equipment</h6>
               <InputSelect
                 defaultOption="Indifferent"
-                options={["Furnished", "Unfurnished"]}
+                options={["furnished", "unfurnished"]}
                 filter="equipment"
                 value={filters.equipment}
                 handleChange={handleChangeSelect}
