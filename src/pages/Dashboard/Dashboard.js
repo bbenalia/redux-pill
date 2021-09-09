@@ -46,20 +46,39 @@ function Dashboard() {
     // ! Get the url pairs
     const entriesURL = queryString.entries();
 
+    const obj = {
+      type: {},
+      room: {},
+      bath: {},
+      equipment: {},
+      condition: {},
+      price: {
+        min: "",
+        max: "",
+      },
+      publication_date: {},
+      moreFilters: {},
+      search: {},
+    };
     // eslint-disable-next-line no-restricted-syntax
     for (const pair of entriesURL) {
       // eslint-disable-next-line no-new-object
-      if (pair[0] === "type") {
-        const type = {};
-        type[pair[1]] = true;
-        console.log(type);
-      }
-      if (pair[0] === "room") {
-        const room = {};
-        room[pair[1]] = true;
+      if (
+        pair[0] !== "type" &&
+        pair[0] !== "room" &&
+        pair[0] !== "bath" &&
+        pair[0] !== "equipment" &&
+        pair[0] !== "condition" &&
+        pair[0] !== "price" &&
+        pair[0] !== "publication_date" &&
+        pair[0] !== "search"
+      ) {
+        obj.moreFilters = { ...obj.moreFilters, [pair[0]]: pair[1] };
+      } else {
+        obj[pair[0]] = { ...obj[pair[0]], [pair[1]]: true };
+        console.log(obj);
       }
     }
-    // console.log(type);
 
     // dispatch(setFilterByUrl(parent));
 
