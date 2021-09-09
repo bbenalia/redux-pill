@@ -7,6 +7,7 @@ import {
   FILTER_BY_ROOM,
   LOADING_FILTER_DATA,
   ERROR_FILTER_DATA,
+  FILTER_BY_BATH,
 } from "./types";
 
 const reducer = (state = INITIAL_STATE, action) => {
@@ -60,6 +61,21 @@ const reducer = (state = INITIAL_STATE, action) => {
         filters: {
           ...filters,
           room: { ...room, ...action.payload },
+        },
+      };
+    }
+
+    case FILTER_BY_BATH: {
+      const {
+        filters: { bath },
+      } = state;
+      const { filters } = state;
+      return {
+        ...state,
+        status: "ok",
+        filters: {
+          ...filters,
+          bath: { ...bath, ...action.payload },
         },
       };
     }

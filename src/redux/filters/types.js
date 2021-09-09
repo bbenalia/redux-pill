@@ -1,6 +1,7 @@
 export const FILTER_BY_HOME = "FILTER_BY_HOME";
 export const FILTER_BY_SEARCH = "FILTER_BY_SEARCH";
 export const FILTER_BY_ROOM = "FILTER_BY_ROOM";
+export const FILTER_BY_BATH = "FILTER_BY_BATH";
 export const FILTER_BY_PRICE = "FILTER_BY_PRICE";
 
 export const LOADING_FILTER_DATA = "LOADING_FILTER_DATA";

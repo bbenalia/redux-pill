@@ -5,6 +5,7 @@ import {
   FILTER_BY_PRICE,
   FILTER_BY_SEARCH,
   FILTER_BY_ROOM,
+  FILTER_BY_BATH,
   LOADING_FILTER_DATA,
   ERROR_FILTER_DATA,
 } from "./types";
@@ -22,6 +23,11 @@ export const filterBySearch = (search) => ({
 export const setRoomFilter = (room) => ({
   type: FILTER_BY_ROOM,
   payload: room,
+});
+
+export const setBathFilter = (bath) => ({
+  type: FILTER_BY_BATH,
+  payload: bath,
 });
 
 export const setPriceFilter = (priceFilter) => ({

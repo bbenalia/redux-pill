@@ -16,6 +16,7 @@ import {
   setHomeFilter,
   setRoomFilter,
   setPriceFilter,
+  setBathFilter,
 } from "../../redux/filters/actions";
 
 function Dashboard() {
@@ -47,6 +48,14 @@ function Dashboard() {
       [event.target.value]: event.target.classList.length === 3,
     };
     dispatch(setRoomFilter(objRoom));
+  };
+
+  const handleBathrooms = (event) => {
+    event.target.classList.toggle("unselected");
+    const objBath = {
+      [event.target.value]: event.target.classList.length === 3,
+    };
+    dispatch(setBathFilter(objBath));
   };
 
   return (
@@ -133,13 +142,13 @@ function Dashboard() {
 
             <div className="col-3">
               <h6>Bathrooms</h6>
-              <SelectButton unselected value={1} onClick={handleBedrooms}>
+              <SelectButton unselected value={1} onClick={handleBathrooms}>
                 1
               </SelectButton>
-              <SelectButton unselected value={2} onClick={handleBedrooms}>
+              <SelectButton unselected value={2} onClick={handleBathrooms}>
                 2
               </SelectButton>
-              <SelectButton unselected value={3} onClick={handleBedrooms}>
+              <SelectButton unselected value={3} onClick={handleBathrooms}>
                 3 or +
               </SelectButton>
             </div>
@@ -234,7 +243,7 @@ function Dashboard() {
           </div>
         </div>
 
-        <div className="container mt-5 shadow-sm rounded p-3">
+        <div className="container mt-5 mb-5 shadow-sm rounded p-3">
           <HouseListing />
         </div>
       </div>

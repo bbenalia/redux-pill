@@ -10,7 +10,26 @@ export function getFilterParams(filters) {
 
   if (filters.room) {
     Object.entries(filters.room).map(([key, value]) => {
-      if (value) query += `room=${key}&`;
+      if (value) {
+        if (key >= 4) {
+          query += `room_gte=${key}&`;
+        } else {
+          query += `room=${key}&`;
+        }
+      }
+      return value;
+    });
+  }
+
+  if (filters.bath) {
+    Object.entries(filters.bath).map(([key, value]) => {
+      if (value) {
+        if (key >= 3) {
+          query += `bath_gte=${key}&`;
+        } else {
+          query += `bath=${key}&`;
+        }
+      }
       return value;
     });
   }
@@ -19,12 +38,10 @@ export function getFilterParams(filters) {
     query += `q=${filters.search}&`;
   }
 
-  // if (filters.price) {
-  //   const { min, max } = filters.price;
-  //   query += `price_gte=${min}&price_lte=${max}&`;
-  // }
-
-  console.log(query);
+  if (filters.price.min || filters.price.max) {
+    const { min, max } = filters.price;
+    query += `price_gte=${min}&price_lte=${max}&`;
+  }
 
   return query;
 }
