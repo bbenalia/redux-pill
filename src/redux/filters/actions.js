@@ -8,6 +8,7 @@ import {
   FILTER_BY_SEARCH,
   FILTER_BY_ROOM,
   FILTER_BY_BATH,
+  FILTER_BY_DATE,
   LOADING_FILTER_DATA,
   ERROR_FILTER_DATA,
 } from "./types";
@@ -34,6 +35,16 @@ export const setCheckboxFilters = (data, filterType) => {
   return { type: ERROR_FILTER_DATA };
 };
 
+export const setSelectFilters = (data, filterType) => {
+  if (filterType === "publication_date")
+    return {
+      type: FILTER_BY_DATE,
+      payload: data,
+    };
+
+  return { type: ERROR_FILTER_DATA };
+};
+
 export const setButtonsFilters = (data, filterType) => {
   if (filterType === "room")
     return {
@@ -53,16 +64,6 @@ export const filterBySearch = (search) => ({
   type: FILTER_BY_SEARCH,
   payload: search,
 });
-
-// export const setRoomFilter = (room) => ({
-//   type: FILTER_BY_ROOM,
-//   payload: room,
-// });
-
-// export const setBathFilter = (bath) => ({
-//   type: FILTER_BY_BATH,
-//   payload: bath,
-// });
 
 export const setPriceFilter = (priceFilter) => ({
   type: FILTER_BY_PRICE,

@@ -18,10 +18,15 @@ function InputSelect({
   name = "",
   options,
   defaultOption,
+  filter,
   handleChange = () => {},
   handleBlur = () => {},
   ...props
 }) {
+  function onHandleChange(event) {
+    handleChange(event.target.value, filter);
+  }
+
   return (
     <select
       className="form-select"
@@ -29,7 +34,7 @@ function InputSelect({
       id={id}
       name={name}
       value={value}
-      onChange={handleChange}
+      onChange={onHandleChange}
       onBlur={handleBlur}
       {...props}
     >
