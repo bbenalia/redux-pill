@@ -264,7 +264,7 @@ function Dashboard() {
             <div className="col-3">
               <h6>Publication Date</h6>
               <InputSelect
-                defaultOption=""
+                defaultOption="Anytime"
                 options={["Last 24 hours", "Last week"]}
                 filter="publication_date"
                 value={filters.publication_date}
