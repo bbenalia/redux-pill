@@ -17,7 +17,19 @@ export function getFilterParams(filters) {
     query += `price_gte=${min}&price_lte=${max}&`;
   }
 
-  // console.log(query);
+  if (filters.condition) {
+    Object.entries(filters.condition).map(([key, value]) => {
+      if (value) query += `condition=${key}&`;
+      return value;
+    });
+  }
+
+  if (filters.moreFilters) {
+    Object.entries(filters.moreFilters).map(([key, value]) => {
+      if (value) query += `${key}=${value}&`;
+      return value;
+    });
+  }
 
   return query;
 }
