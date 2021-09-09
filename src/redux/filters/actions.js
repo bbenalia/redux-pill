@@ -4,6 +4,7 @@ import {
   FILTER_BY_HOME,
   FILTER_BY_PRICE,
   FILTER_BY_CONDITION,
+  FILTER_BY_OTHER,
   FILTER_BY_SEARCH,
   LOADING_FILTER_DATA,
   ERROR_FILTER_DATA,
@@ -16,9 +17,15 @@ export const setCheckboxFilters = (data, filterType) => {
       payload: data,
     };
 
-  if (filterType === "consition")
+  if (filterType === "condition")
     return {
       type: FILTER_BY_CONDITION,
+      payload: data,
+    };
+
+  if (filterType === "moreFilters")
+    return {
+      type: FILTER_BY_OTHER,
       payload: data,
     };
 

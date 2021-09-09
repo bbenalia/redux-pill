@@ -3,6 +3,8 @@ import INITIAL_STATE from "./state";
 import {
   FILTER_BY_HOME,
   FILTER_BY_PRICE,
+  FILTER_BY_CONDITION,
+  FILTER_BY_OTHER,
   FILTER_BY_SEARCH,
   LOADING_FILTER_DATA,
   ERROR_FILTER_DATA,
@@ -22,6 +24,38 @@ const reducer = (state = INITIAL_STATE, action) => {
         filters: {
           ...filters,
           type: { ...type, ...action.payload },
+        },
+      };
+    }
+
+    case FILTER_BY_CONDITION: {
+      const {
+        filters: { condition },
+      } = state;
+      const { filters } = state;
+
+      return {
+        ...state,
+        status: "ok",
+        filters: {
+          ...filters,
+          condition: { ...condition, ...action.payload },
+        },
+      };
+    }
+
+    case FILTER_BY_OTHER: {
+      const {
+        filters: { moreFilters },
+      } = state;
+      const { filters } = state;
+
+      return {
+        ...state,
+        status: "ok",
+        filters: {
+          ...filters,
+          moreFilters: { ...moreFilters, ...action.payload },
         },
       };
     }
