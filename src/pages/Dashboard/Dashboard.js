@@ -34,6 +34,7 @@ function Dashboard() {
 
   useEffect(() => {
     dispatch(setFilteredProducts(debouncedFilters));
+
     const query = getFilterParams(debouncedFilters);
     history.push(query);
   }, [dispatch, debouncedFilters, history]);
