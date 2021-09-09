@@ -35,20 +35,19 @@ function Dashboard() {
   const debouncedFilters = useDebounce(filters, 500);
 
   useEffect(() => {
-    dispatch(setFilteredProducts(debouncedFilters));
-    const query = getFilterParams(debouncedFilters);
-    history.push(query);
-  }, [dispatch, debouncedFilters, history]);
-
-  useEffect(() => {
     const queryParam = queryString.toString().replace("%2F", "/");
+    const queryFilters = getFiltersFromQueryParams(queryString.entries());
     if (queryParam) history.push(`?${queryParam}`);
-    const entriesURL = queryString.entries();
-    const queryFilters = getFiltersFromQueryParams(entriesURL);
-    dispatch(setFilterByUrl(queryFilters));
     dispatch(fetchProducts());
+    dispatch(setFilterByUrl(queryFilters));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dispatch]);
+
+  useEffect(() => {
+    const query = getFilterParams(debouncedFilters);
+    dispatch(setFilteredProducts(debouncedFilters));
+    history.push(query);
+  }, [dispatch, debouncedFilters, history]);
 
   const handleChangeCheckbox = (event, filterType) => {
     const obj = { [event.target.name]: event.target.checked };
@@ -268,7 +267,7 @@ function Dashboard() {
             <div className="col-3">
               <h6>Publication Date</h6>
               <InputSelect
-                defaultOption=""
+                defaultOption="Anytime"
                 options={["Last 24 hours", "Last week"]}
                 filter="publication_date"
                 value={filters.publication_date}

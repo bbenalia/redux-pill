@@ -57,6 +57,10 @@ export function getFilterParams(filters) {
     });
   }
 
+  if (filters.equipment.length > 0) {
+    query += `equipment=${filters.equipment}&`;
+  }
+
   if (filters.publication_date.length) {
     const now = new Date();
 
