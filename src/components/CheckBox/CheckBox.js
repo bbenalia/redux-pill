@@ -7,11 +7,16 @@ export default function CheckBox({
   name,
   value,
   disabled = false,
+  filter,
   label = "Default checkbox",
   checked = false,
   handleChange = () => {},
   ...props
 }) {
+  function onHandleChange(event) {
+    handleChange(event, filter);
+  }
+
   return (
     <div className="form-check">
       <input
@@ -22,7 +27,7 @@ export default function CheckBox({
         value={value}
         checked={checked}
         disabled={disabled}
-        onChange={handleChange}
+        onChange={onHandleChange}
         {...props}
       />
       <label className="form-check-label" htmlFor={id}>
