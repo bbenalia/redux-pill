@@ -2,10 +2,12 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { filterBySearch } from "../../redux/filters/actions";
+// import { setFilteredProducts } from "../../redux/products/actions";
 
 import SearchIcon from "../SVGIcons/SearchIcon";
 
 function SearchBar() {
+  // const { filters } = useSelector((state) => state.filters);
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -14,6 +16,7 @@ function SearchBar() {
     const currentLocation = window.location.href;
     const searchValue = e.target[1].value;
     dispatch(filterBySearch(searchValue));
+    // dispatch(setFilteredProducts(filters));
     if (currentLocation === "http://localhost:5000/")
       history.push("/dashboard");
   };

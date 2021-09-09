@@ -19,6 +19,7 @@ import {
 import {
   setButtonsFilters,
   setCheckboxFilters,
+  // setFilterByUrl,
   setPriceFilter,
   setSelectFilters,
 } from "../../redux/filters/actions";
@@ -42,6 +43,46 @@ function Dashboard() {
   useEffect(() => {
     const queryParam = queryString.toString().replace("%2F", "/");
     if (queryParam) history.push(`?${queryParam}`);
+
+    // ! Get the url pairs
+    const entriesURL = queryString.entries();
+
+    const obj = {
+      type: {},
+      room: {},
+      bath: {},
+      equipment: {},
+      condition: {},
+      price: {
+        min: "",
+        max: "",
+      },
+      publication_date: {},
+      moreFilters: {},
+      search: {},
+    };
+    // eslint-disable-next-line no-restricted-syntax
+    for (const pair of entriesURL) {
+      // eslint-disable-next-line no-new-object
+      if (
+        pair[0] !== "type" &&
+        pair[0] !== "room" &&
+        pair[0] !== "bath" &&
+        pair[0] !== "equipment" &&
+        pair[0] !== "condition" &&
+        pair[0] !== "price" &&
+        pair[0] !== "publication_date" &&
+        pair[0] !== "search"
+      ) {
+        obj.moreFilters = { ...obj.moreFilters, [pair[0]]: pair[1] };
+      } else {
+        obj[pair[0]] = { ...obj[pair[0]], [pair[1]]: true };
+        console.log(obj);
+      }
+    }
+
+    // dispatch(setFilterByUrl(parent));
+
     dispatch(fetchProducts());
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dispatch]);
