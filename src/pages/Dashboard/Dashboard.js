@@ -26,6 +26,7 @@ import {
 
 import { getFilterParams } from "../../helpers/filterParams";
 import getFiltersFromQueryParams from "../../helpers/queryParamsFilter";
+import INITIAL_STATE from "../../redux/filters/state";
 
 function Dashboard() {
   const { filters } = useSelector((state) => state.filters);
@@ -34,21 +35,32 @@ function Dashboard() {
   const queryString = useQuery();
   const debouncedFilters = useDebounce(filters, 500);
 
+  /*
+   *
+   * hooks
+   *
+   */
+  const queryParam = queryString.toString().replace("%2F", "/");
+  const queryFilters = getFiltersFromQueryParams(queryString.entries());
+
   useEffect(() => {
-    const queryParam = queryString.toString().replace("%2F", "/");
-    const queryFilters = getFiltersFromQueryParams(queryString.entries());
-    if (queryParam) history.push(`?${queryParam}`);
-    dispatch(fetchProducts());
-    dispatch(setFilterByUrl(queryFilters));
+    if (queryParam) dispatch(setFilterByUrl(queryFilters));
+    else dispatch(fetchProducts());
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [dispatch]);
+  }, []);
 
   useEffect(() => {
     const query = getFilterParams(debouncedFilters);
-    dispatch(setFilteredProducts(debouncedFilters));
+    if (INITIAL_STATE.filters !== debouncedFilters)
+      dispatch(setFilteredProducts(debouncedFilters));
     history.push(query);
   }, [dispatch, debouncedFilters, history]);
 
+  /*
+   *
+   * Handlers
+   *
+   */
   const handleChangeCheckbox = (event, filterType) => {
     const obj = { [event.target.name]: event.target.checked };
     dispatch(setCheckboxFilters(obj, filterType));
@@ -208,7 +220,7 @@ function Dashboard() {
               <h6>Equipment</h6>
               <InputSelect
                 defaultOption="Indifferent"
-                options={["Furnished", "Unfurnished"]}
+                options={["furnished", "unfurnished"]}
                 filter="equipment"
                 value={filters.equipment}
                 handleChange={handleChangeSelect}
