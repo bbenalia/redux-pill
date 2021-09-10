@@ -64,7 +64,7 @@
       "id": 2,
       "street": "dsadasds",
       "number": 10,
-      "city": "asdasdasd",
+      "city": "Badalona",
       "province": "Barcelona",
       "country": "Spain",
       "status": "available",
@@ -84,13 +84,13 @@
       "swimming_pool": false,
       "terrace": true,
       "publication_date": "2021-09-08T08:48:00.000Z",
-      "image": "https://images.unsplash.com/photo-1580587771525-78b9dba3b914?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8aG91c2V8ZW58MHx8MHx8&ixlib=rb-1.2.1&w=1000&q=80"
+      "image": "https://images.adsttc.com/media/images/5ecd/d4ac/b357/65c6/7300/009d/large_jpg/02C.jpg?1590547607"
     },
     {
       "id": 3,
       "street": "nueva",
       "number": 10,
-      "city": "Molins de Rei",
+      "city": "Sabadell",
       "province": "Barcelona",
       "country": "Spain",
       "status": "available",
@@ -110,13 +110,13 @@
       "swimming_pool": false,
       "terrace": true,
       "publication_date": "2021-09-07T08:48:00.000Z",
-      "image": "https://images.unsplash.com/photo-1580587771525-78b9dba3b914?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8aG91c2V8ZW58MHx8MHx8&ixlib=rb-1.2.1&w=1000&q=80"
+      "image": "https://images.unsplash.com/photo-1513584684374-8bab748fbf90?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1046&q=80"
     },
     {
       "id": 4,
       "street": "0 room",
       "number": 10,
-      "city": "Molins de Rei",
+      "city": "L'Hospitalet de Llobregat",
       "province": "Barcelona",
       "country": "Spain",
       "status": "available",
@@ -136,7 +136,7 @@
       "swimming_pool": true,
       "terrace": true,
       "publication_date": "2021-08-06T08:48:00.000Z",
-      "image": "https://images.unsplash.com/photo-1580587771525-78b9dba3b914?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8aG91c2V8ZW58MHx8MHx8&ixlib=rb-1.2.1&w=1000&q=80"
+      "image": "https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80"
     }
   ],
   "favorite": [
