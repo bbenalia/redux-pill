@@ -12,14 +12,14 @@ export default function getFiltersFromQueryParams(entriesURL) {
       pair[0] === "condition"
     ) {
       obj[pair[0]] = { ...obj[pair[0]], [pair[1]]: true };
-    } else if (pair[0] === "price_gte") {
-      obj.price.min = pair[1];
     } else if (pair[0] === "room_gte") {
-      obj.room[4] = true;
+      obj.room = { ...obj.room, 4: true };
     } else if (pair[0] === "bath_gte") {
-      obj.bath[3] = true;
+      obj.bath = { ...obj.bath, 3: true };
     } else if (pair[0] === "price_lte") {
-      obj.price.max = pair[1];
+      obj.price = { max: pair[1] };
+    } else if (pair[0] === "price_gte") {
+      obj.price = { min: pair[1] };
     } else if (pair[0] === "publication_date_gte") {
       const qDate = new Date(pair[1]);
       const now = new Date();
@@ -28,6 +28,8 @@ export default function getFiltersFromQueryParams(entriesURL) {
       else obj.publication_date = "Last 24 hours";
     } else if (pair[0] === "equipment") {
       obj.equipment = pair[1];
+    } else if (pair[0] === "q") {
+      obj.search = pair[1];
     } else {
       obj.moreFilters = { ...obj.moreFilters, [pair[0]]: true };
     }

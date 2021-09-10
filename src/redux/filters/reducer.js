@@ -8,11 +8,12 @@ import {
   FILTER_BY_SEARCH,
   FILTER_BY_ROOM,
   FILTER_BY_DATE,
-  LOADING_FILTER_DATA,
-  ERROR_FILTER_DATA,
   FILTER_BY_BATH,
   SET_FILTER_BY_URL,
   FILTER_BY_EQUIPMENT,
+  RESET_FILTERS,
+  LOADING_FILTER_DATA,
+  ERROR_FILTER_DATA,
 } from "./types";
 
 const reducer = (state = INITIAL_STATE, action) => {
@@ -149,6 +150,10 @@ const reducer = (state = INITIAL_STATE, action) => {
         status: "ok",
         filters: { ...filters, ...action.payload },
       };
+    }
+
+    case RESET_FILTERS: {
+      return INITIAL_STATE;
     }
 
     case LOADING_FILTER_DATA:
