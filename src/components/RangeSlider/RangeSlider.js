@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Slider from "@material-ui/core/Slider";
 
 import "./RangeSlider.scss";
@@ -6,6 +6,8 @@ import "./RangeSlider.scss";
 export default function RangeSlider({
   max = 4000,
   min = 0,
+  propMinValue = min,
+  propMaxValue = max,
   handleChange = () => {},
   ...props
 }) {
@@ -13,35 +15,36 @@ export default function RangeSlider({
   const [minValue, setMinValue] = useState(min);
   const [maxValue, setMaxValue] = useState(max);
 
+  useEffect(() => {
+    setMinValue(propMinValue);
+    setMaxValue(propMaxValue);
+    setSliderValue([(100 / max) * propMinValue, (100 / max) * propMaxValue]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [propMinValue, propMaxValue]);
+
   const handleChangeSlider = (_event, newValue) => {
     const minVal = (max / 100) * newValue[0];
     const maxVal = (max / 100) * newValue[1];
-
     setSliderValue(newValue);
     setMinValue(minVal);
     setMaxValue(maxVal);
-
     handleChange(_event, minVal, maxVal);
   };
 
   const handleChangeMinimum = (event) => {
     const targetValue = event.target.value;
-
     if (targetValue >= min && targetValue <= max) {
       setMinValue(targetValue);
       setSliderValue([(100 / max) * targetValue, sliderValue[1]]);
-
       handleChange(event, targetValue, maxValue);
     }
   };
 
   const handleChangeMaximum = (event) => {
     const targetValue = event.target.value;
-
     if (targetValue >= min && targetValue <= max) {
       setMaxValue(targetValue);
       setSliderValue([sliderValue[0], (100 / max) * targetValue]);
-
       handleChange(event, minValue, targetValue);
     }
   };
