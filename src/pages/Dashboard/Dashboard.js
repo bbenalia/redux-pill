@@ -22,6 +22,7 @@ import {
   setFilterByUrl,
   setPriceFilter,
   setSelectFilters,
+  resetFilters,
 } from "../../redux/filters/actions";
 
 import { getFilterParams } from "../../helpers/filterParams";
@@ -81,12 +82,17 @@ function Dashboard() {
     dispatch(setButtonsFilters(obj, filterType));
   };
 
+  const handleResetFilters = () => {
+    dispatch(resetFilters());
+    dispatch(fetchProducts());
+  };
+
   return (
     <>
       <div className="container mt-5">
         <div className="row">
           <div className="col">
-            <SearchBar />
+            <SearchBar value={filters.search} />
           </div>
           <div className="col text-end align-items-center">
             <img
@@ -359,8 +365,18 @@ function Dashboard() {
               </div>
             </div>
           </div>
+          <div className="row mt-2">
+            <div className="container p-0 pe-3 text-end">
+              <button
+                type="button"
+                className="btn btn-warning ms-3 rounded-pill px-3"
+                onClick={handleResetFilters}
+              >
+                Reset Filters
+              </button>
+            </div>
+          </div>
         </div>
-
         <div className="container mt-5 mb-5 shadow-sm rounded p-3">
           <HouseListing />
         </div>
