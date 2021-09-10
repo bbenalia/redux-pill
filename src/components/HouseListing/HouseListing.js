@@ -39,7 +39,7 @@ export default function BasicTable() {
                 {/* Image */}
                 <TableCell component="th" scope="row">
                   <img
-                    className="rounded size-img"
+                    className="rounded size-img custom-picture-row"
                     src={row.image}
                     alt={row.street + row.id}
                   />

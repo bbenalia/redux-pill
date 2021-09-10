@@ -1,10 +1,12 @@
 import React from "react";
 
+import "./HouseCard.scss";
+
 function HouseCard({ home }) {
   return (
     <div className="col-6">
       <img
-        className="pe-3 w-100 mb-1"
+        className="pe-3 w-100 mb-1 custom-picture"
         src={home.image}
         alt={home.street + home.id}
       />
