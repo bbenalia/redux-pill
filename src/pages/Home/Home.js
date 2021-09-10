@@ -1,9 +1,17 @@
-import React from "react";
-import withLayout from "../../hoc/withLayout";
+import React, { useEffect } from "react";
+import { useDispatch } from "react-redux";
 
+import withLayout from "../../hoc/withLayout";
 import SearchBar from "../../components/SearchBar";
+import { resetFilters } from "../../redux/filters/actions";
 
 function Home() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(resetFilters());
+  }, [dispatch]);
+
   return (
     <div className="container mt-5 h-100">
       <div className="pt-3 pb-3 row">
