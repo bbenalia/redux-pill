@@ -2,7 +2,6 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { filterBySearch } from "../../redux/filters/actions";
-// import { setFilteredProducts } from "../../redux/products/actions";
 
 import SearchIcon from "../SVGIcons/SearchIcon";
 
