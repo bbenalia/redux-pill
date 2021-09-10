@@ -12,7 +12,7 @@ const INITIAL_STATE = {
     },
     publication_date: "",
     moreFilters: {},
-    search: {},
+    search: "",
   },
 };
 

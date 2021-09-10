@@ -7,7 +7,7 @@ import SearchIcon from "../SVGIcons/SearchIcon";
 
 import "./SearchBar.scss";
 
-function SearchBar() {
+function SearchBar({ value }) {
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -35,6 +35,7 @@ function SearchBar() {
         <input
           type="text"
           id="header-search"
+          defaultValue={value}
           placeholder="| Search..."
           name="s"
           className="w-75 bg-transparent border-0"

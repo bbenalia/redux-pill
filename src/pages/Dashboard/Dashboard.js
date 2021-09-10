@@ -92,7 +92,7 @@ function Dashboard() {
       <div className="container mt-5">
         <div className="row">
           <div className="col">
-            <SearchBar />
+            <SearchBar value={filters.search} />
           </div>
           <div className="col text-end align-items-center">
             <img
