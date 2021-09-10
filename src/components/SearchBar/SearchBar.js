@@ -5,6 +5,8 @@ import { filterBySearch } from "../../redux/filters/actions";
 
 import SearchIcon from "../SVGIcons/SearchIcon";
 
+import "./SearchBar.scss";
+
 function SearchBar() {
   const dispatch = useDispatch();
   const history = useHistory();
