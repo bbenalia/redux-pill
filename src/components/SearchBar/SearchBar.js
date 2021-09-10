@@ -11,13 +11,18 @@ function SearchBar({ value }) {
   const dispatch = useDispatch();
   const history = useHistory();
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     const currentLocation = window.location.href;
     const searchValue = e.target[1].value;
-    await dispatch(filterBySearch(searchValue));
+    dispatch(filterBySearch(searchValue));
     if (currentLocation === "http://localhost:5000/")
       history.push("/dashboard");
+  };
+
+  const handleChange = (e) => {
+    const searchValue = e.target.value;
+    dispatch(filterBySearch(searchValue));
   };
 
   return (
@@ -35,7 +40,8 @@ function SearchBar({ value }) {
         <input
           type="text"
           id="header-search"
-          defaultValue={value}
+          value={value}
+          onChange={handleChange}
           placeholder="| Search..."
           name="s"
           className="w-75 bg-transparent border-0"
