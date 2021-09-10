@@ -77,11 +77,8 @@ function Dashboard() {
         obj.moreFilters = { ...obj.moreFilters, [pair[0]]: pair[1] };
       } else {
         obj[pair[0]] = { ...obj[pair[0]], [pair[1]]: true };
-        console.log(obj);
       }
     }
-
-    // dispatch(setFilterByUrl(parent));
 
     dispatch(fetchProducts());
     // eslint-disable-next-line react-hooks/exhaustive-deps

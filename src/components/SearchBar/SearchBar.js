@@ -7,16 +7,14 @@ import { filterBySearch } from "../../redux/filters/actions";
 import SearchIcon from "../SVGIcons/SearchIcon";
 
 function SearchBar() {
-  // const { filters } = useSelector((state) => state.filters);
   const dispatch = useDispatch();
   const history = useHistory();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const currentLocation = window.location.href;
     const searchValue = e.target[1].value;
-    dispatch(filterBySearch(searchValue));
-    // dispatch(setFilteredProducts(filters));
+    await dispatch(filterBySearch(searchValue));
     if (currentLocation === "http://localhost:5000/")
       history.push("/dashboard");
   };
