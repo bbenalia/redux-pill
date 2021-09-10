@@ -11,6 +11,7 @@ import {
   LOADING_FILTER_DATA,
   ERROR_FILTER_DATA,
   FILTER_BY_BATH,
+  SET_FILTER_BY_URL,
   FILTER_BY_EQUIPMENT,
 } from "./types";
 
@@ -138,6 +139,15 @@ const reducer = (state = INITIAL_STATE, action) => {
           ...filters,
           bath: { ...bath, ...action.payload },
         },
+      };
+    }
+
+    case SET_FILTER_BY_URL: {
+      const { filters } = state;
+      return {
+        ...state,
+        status: "ok",
+        filters: { ...filters, ...action.payload },
       };
     }
 

@@ -19,11 +19,14 @@ import {
 import {
   setButtonsFilters,
   setCheckboxFilters,
+  setFilterByUrl,
   setPriceFilter,
   setSelectFilters,
 } from "../../redux/filters/actions";
 
 import { getFilterParams } from "../../helpers/filterParams";
+import getFiltersFromQueryParams from "../../helpers/queryParamsFilter";
+import INITIAL_STATE from "../../redux/filters/state";
 
 function Dashboard() {
   const { filters } = useSelector((state) => state.filters);
@@ -32,20 +35,32 @@ function Dashboard() {
   const queryString = useQuery();
   const debouncedFilters = useDebounce(filters, 500);
 
-  useEffect(() => {
-    dispatch(setFilteredProducts(debouncedFilters));
+  /*
+   *
+   * hooks
+   *
+   */
+  const queryParam = queryString.toString().replace("%2F", "/");
+  const queryFilters = getFiltersFromQueryParams(queryString.entries());
 
+  useEffect(() => {
+    if (queryParam) dispatch(setFilterByUrl(queryFilters));
+    else dispatch(fetchProducts());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  useEffect(() => {
     const query = getFilterParams(debouncedFilters);
+    if (INITIAL_STATE.filters !== debouncedFilters)
+      dispatch(setFilteredProducts(debouncedFilters));
     history.push(query);
   }, [dispatch, debouncedFilters, history]);
 
-  useEffect(() => {
-    const queryParam = queryString.toString().replace("%2F", "/");
-    if (queryParam) history.push(`?${queryParam}`);
-    dispatch(fetchProducts());
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [dispatch]);
-
+  /*
+   *
+   * Handlers
+   *
+   */
   const handleChangeCheckbox = (event, filterType) => {
     const obj = { [event.target.name]: event.target.checked };
     dispatch(setCheckboxFilters(obj, filterType));
@@ -57,15 +72,12 @@ function Dashboard() {
   };
 
   const handleChangeSelect = (value, filterType) => {
-    // const obj = { min: minVal, max: maxVal };
     dispatch(setSelectFilters(value, filterType));
-    // console.log(event, filterType);
   };
 
-  const handleChangeButtons = (event) => {
-    event.target.classList.toggle("unselected");
+  const handleChangeButtons = (event, value) => {
     const filterType = event.target.attributes.filter.value;
-    const obj = { [event.target.value]: event.target.classList.length === 3 };
+    const obj = { [event.target.value]: value };
     dispatch(setButtonsFilters(obj, filterType));
   };
 
@@ -134,43 +146,43 @@ function Dashboard() {
             <div className="col-3">
               <h6>Bedrooms</h6>
               <SelectButton
-                unselected
                 value={0}
                 name="room1"
                 filter="room"
-                onClick={handleChangeButtons}
+                checked={filters.room[0]}
+                handleClick={handleChangeButtons}
               >
                 0 (studio flat)
               </SelectButton>
               <SelectButton
-                unselected
                 value={1}
                 filter="room"
-                onClick={handleChangeButtons}
+                checked={filters.room[1]}
+                handleClick={handleChangeButtons}
               >
                 1
               </SelectButton>
               <SelectButton
-                unselected
                 value={2}
                 filter="room"
-                onClick={handleChangeButtons}
+                checked={filters.room[2]}
+                handleClick={handleChangeButtons}
               >
                 2
               </SelectButton>
               <SelectButton
-                unselected
                 value={3}
                 filter="room"
-                onClick={handleChangeButtons}
+                checked={filters.room[3]}
+                handleClick={handleChangeButtons}
               >
                 3
               </SelectButton>
               <SelectButton
-                unselected
                 value={4}
                 filter="room"
-                onClick={handleChangeButtons}
+                checked={filters.room[4]}
+                handleClick={handleChangeButtons}
               >
                 4 or +
               </SelectButton>
@@ -179,26 +191,26 @@ function Dashboard() {
             <div className="col-3">
               <h6>Bathrooms</h6>
               <SelectButton
-                unselected
                 value={1}
                 filter="bath"
-                onClick={handleChangeButtons}
+                checked={filters.bath[1]}
+                handleClick={handleChangeButtons}
               >
                 1
               </SelectButton>
               <SelectButton
-                unselected
                 value={2}
                 filter="bath"
-                onClick={handleChangeButtons}
+                checked={filters.bath[2]}
+                handleClick={handleChangeButtons}
               >
                 2
               </SelectButton>
               <SelectButton
-                unselected
                 value={3}
                 filter="bath"
-                onClick={handleChangeButtons}
+                checked={filters.bath[3]}
+                handleClick={handleChangeButtons}
               >
                 3 or +
               </SelectButton>
@@ -258,6 +270,8 @@ function Dashboard() {
               <RangeSlider
                 max={500000}
                 min={0}
+                propMinValue={filters.price.min}
+                propMaxValue={filters.price.max}
                 handleChange={handleChangePrice}
               />
             </div>
