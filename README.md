@@ -6,6 +6,10 @@
   <img alt="Version" src="https://img.shields.io/badge/version-1.0-blue.svg?cacheSeconds=2592000" />
 </p>
 
+<p>
+  <img alt="project_view" src="./src/assets/Screenshot_project.png" />
+</p>
+
 > In this project, we learned how to set up the Redux library into a ReactJS project, save a global state into it and use its middlewares to perform async actions.
 >
 > To achieve this goal, we implemented a real state portal with the functionality of search and filtering properties.
@@ -22,7 +26,6 @@
   - [Contents and Branches Naming Strategy](#contents-and-branches-naming-strategy)
   - [Packages used](#packages-used)
   - [Technologies used](#technologies-used)
-  - [Project delivery](#project-delivery)
   - [Resources](#resources)
   - [Contributors ✨](#contributors-)
 
@@ -112,12 +115,6 @@ The branches follow a naming strategy like the following:
 \* Redux Thunk
 
 \* LocalStorage
-
-## Project delivery
-
-To deliver this project you must follow the steps indicated in the document:
-
-- [Submitting a solution](https://www.notion.so/Submitting-a-solution-524dab1a71dd4b96903f26385e24cdb6)
 
 ## Resources
 

@@ -17,9 +17,9 @@ export default function getFiltersFromQueryParams(entriesURL) {
     } else if (pair[0] === "bath_gte") {
       obj.bath = { ...obj.bath, 3: true };
     } else if (pair[0] === "price_lte") {
-      obj.price = { max: pair[1] };
+      obj.price = { ...obj.price, max: pair[1] };
     } else if (pair[0] === "price_gte") {
-      obj.price = { min: pair[1] };
+      obj.price = { ...obj.price, min: pair[1] };
     } else if (pair[0] === "publication_date_gte") {
       const qDate = new Date(pair[1]);
       const now = new Date();
