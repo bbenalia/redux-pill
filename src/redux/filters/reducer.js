@@ -11,8 +11,8 @@ import {
   LOADING_FILTER_DATA,
   ERROR_FILTER_DATA,
   FILTER_BY_BATH,
-  FILTER_BY_EQUIPMENT,
   SET_FILTER_BY_URL,
+  FILTER_BY_EQUIPMENT,
 } from "./types";
 
 const reducer = (state = INITIAL_STATE, action) => {
@@ -143,12 +143,11 @@ const reducer = (state = INITIAL_STATE, action) => {
     }
 
     case SET_FILTER_BY_URL: {
-      console.log(action.payload);
-      // const { filters } = state;
+      const { filters } = state;
       return {
         ...state,
         status: "ok",
-        // filters: { ...filters, type: action.payload },
+        filters: { ...filters, ...action.payload },
       };
     }
 
