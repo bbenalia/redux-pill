@@ -1,10 +1,11 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import withLayout from "../../hoc/withLayout";
 
+import withLayout from "../../hoc/withLayout";
 import SearchBar from "../../components/SearchBar";
 import HouseCard from "../../components/HouseCard";
 import { fetchProducts } from "../../redux/products/actions";
+import { resetFilters } from "../../redux/filters/actions";
 
 function Home() {
   const { data } = useSelector((state) => state.products);
@@ -12,7 +13,8 @@ function Home() {
 
   useEffect(() => {
     dispatch(fetchProducts());
-  }, []);
+    dispatch(resetFilters());
+  }, [dispatch]);
 
   return (
     <div className="container mt-5 h-100 ">
