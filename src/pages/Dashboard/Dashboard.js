@@ -31,6 +31,7 @@ import INITIAL_STATE from "../../redux/filters/state";
 
 function Dashboard() {
   const { filters } = useSelector((state) => state.filters);
+  const { user, isAuthenticated } = useSelector((state) => state.users);
   const dispatch = useDispatch();
   const history = useHistory();
   const queryString = useQuery();
@@ -102,7 +103,11 @@ function Dashboard() {
               height="32"
               className="rounded-circle d-inline"
             />
-            <h6 className="d-inline ms-2">username</h6>
+            {isAuthenticated ? (
+              <h6 className="d-inline ms-2">{user.name}</h6>
+            ) : (
+              <h6 className="d-inline ms-2">username</h6>
+            )}
           </div>
         </div>
         <div className="container mt-5 shadow-sm rounded p-3">

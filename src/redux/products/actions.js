@@ -1,4 +1,8 @@
-import { getAllProducts, getProductsByFilters } from "../../api/propertiesApi";
+import {
+  getAllProducts,
+  getProductsByFilters,
+  removeProductById,
+} from "../../api/propertiesApi";
 
 import {
   ERROR_PRODUCTS,
@@ -28,6 +32,16 @@ export const fetchProducts = () => {
     try {
       const apiResult = await getAllProducts();
       dispatch({ type: FETCH_PRODUCTS, payload: apiResult.data });
+    } catch (error) {
+      dispatch({ type: ERROR_PRODUCTS });
+    }
+  };
+};
+
+export const removeProduct = (id) => {
+  return async (dispatch) => {
+    try {
+      await removeProductById(id);
     } catch (error) {
       dispatch({ type: ERROR_PRODUCTS });
     }
