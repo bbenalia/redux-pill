@@ -13,7 +13,8 @@ export const setFilteredProducts = (filters) => {
 
     try {
       const apiResult = await getProductsByFilters(filters);
-      dispatch({ type: SET_PRODUCTS, payload: apiResult.data });
+      const { data } = apiResult.data;
+      dispatch({ type: SET_PRODUCTS, payload: data });
     } catch (error) {
       dispatch({ type: ERROR_PRODUCTS });
     }
