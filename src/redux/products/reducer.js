@@ -8,8 +8,10 @@ import {
 
 const reducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case FETCH_PRODUCTS:
-      return { ...state, status: "ok", data: action.payload };
+    case FETCH_PRODUCTS: {
+      const { data } = action.payload;
+      return { ...state, status: "ok", data: data };
+    }
 
     case SET_PRODUCTS:
       return { ...state, status: "ok", data: action.payload };
