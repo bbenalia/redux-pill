@@ -6,12 +6,12 @@ export default function getFiltersFromQueryParams(entriesURL) {
   // eslint-disable-next-line no-restricted-syntax
   for (const pair of entriesURL) {
     if (
-      pair[0] === "type" ||
-      pair[0] === "room" ||
-      pair[0] === "bath" ||
-      pair[0] === "condition"
+      pair[0] === "type[]" ||
+      pair[0] === "room[]" ||
+      pair[0] === "bath[]" ||
+      pair[0] === "condition[]"
     ) {
-      obj[pair[0]] = { ...obj[pair[0]], [pair[1]]: true };
+      obj[pair[0].replace("[]", "")] = { ...obj[pair[0]], [pair[1]]: true };
     } else if (pair[0] === "room_gte") {
       obj.room = { ...obj.room, 4: true };
     } else if (pair[0] === "bath_gte") {
