@@ -21,3 +21,7 @@ export async function getProductsByFilters(filters, api = makeProductsApi()) {
   const queryParams = getFilterParams(filters);
   return api.get(`${PROPERTIES}${queryParams}`);
 }
+
+export async function removeProductById(id, api = makeProductsApi()) {
+  return api.delete(`${PROPERTIES}/${id}`);
+}

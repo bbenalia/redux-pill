@@ -1,7 +1,7 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
-import { HOME, DASHBOARD } from "../../constants/routes";
+import { HOME, DASHBOARD, LOGIN } from "../../constants/routes";
 
 import "./Header.scss";
 
@@ -40,12 +40,12 @@ export default function Header() {
             </ul>
 
             <form className="d-flex ms-5">
-              <button
+              <Link
+                to={LOGIN}
                 className="btn btn-outline-dark rounded-pill px-3"
-                type="submit"
               >
                 Login
-              </button>
+              </Link>
               <button
                 className="btn btn-warning ms-3 rounded-pill px-3"
                 type="submit"
