@@ -1,5 +1,5 @@
 // API
-export const BASE_URL = "http://localhost:8100/api";
+export const BASE_URL = "https://afternoon-taiga-06989.herokuapp.com/api";
 export const PROPERTIES = "/properties";
 export const USERS = "/login";
 
