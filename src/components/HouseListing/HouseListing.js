@@ -1,5 +1,5 @@
-import React from "react";
-import { useSelector } from "react-redux";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -10,11 +10,34 @@ import Paper from "@mui/material/Paper";
 import { UilBath, UilBedDouble, UilSquare } from "@iconscout/react-unicons";
 
 import "./HouseListing.scss";
+import { useHistory } from "react-router-dom";
 import DeleteIcon from "../SVGIcons/DeleteIcon";
 import CoinIcon from "../SVGIcons/CoinIcon";
+import ButtonRemove from "../ButtonRemove/ButtonRemove";
+import { removeProduct } from "../../redux/products/actions";
 
-export default function BasicTable() {
+export default function HouseListing() {
   const { status, data } = useSelector((state) => state.products);
+  const { isAuthenticated } = useSelector((state) => state.users);
+
+  const [props, setProps] = useState(data);
+
+  useEffect(() => {
+    setProps(data);
+  }, [data]);
+
+  const history = useHistory();
+  const dispatch = useDispatch();
+
+  const removeProperty = (id) => {
+    if (isAuthenticated) {
+      const newPropertiesData = props.filter((prop) => prop.id !== id);
+      setProps(newPropertiesData);
+      dispatch(removeProduct(id));
+    } else {
+      history.push("/login");
+    }
+  };
 
   return (
     <TableContainer component={Paper}>
@@ -31,7 +54,7 @@ export default function BasicTable() {
             </TableRow>
           </TableHead>
           <TableBody>
-            {data.map((row) => (
+            {props.map((row) => (
               <TableRow
                 key={row.id}
                 sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
@@ -74,7 +97,9 @@ export default function BasicTable() {
                 </TableCell>
                 {/* Remove */}
                 <TableCell align="center">
-                  <DeleteIcon size={18} />
+                  <ButtonRemove handleRemove={removeProperty} id={row.id}>
+                    <DeleteIcon size={18} />
+                  </ButtonRemove>
                 </TableCell>
               </TableRow>
             ))}
