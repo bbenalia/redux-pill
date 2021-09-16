@@ -1,6 +1,6 @@
 import INITIAL_STATE from "./state";
 
-import { LOADING_USER, ERROR_USER, LOGIN } from "./types";
+import { LOADING_USER, ERROR_USER, LOGIN, LOGOUT } from "./types";
 
 const reducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
@@ -16,6 +16,10 @@ const reducer = (state = INITIAL_STATE, action) => {
 
     case ERROR_USER:
       return { ...state, status: "error" };
+
+    case LOGOUT: {
+      return INITIAL_STATE;
+    }
     default:
       return state;
   }

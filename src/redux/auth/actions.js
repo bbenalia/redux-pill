@@ -1,4 +1,4 @@
-import { LOADING_USER, ERROR_USER, LOGIN } from "./types";
+import { LOADING_USER, ERROR_USER, LOGIN, LOGOUT } from "./types";
 
 import { getUser } from "../../api/userApi";
 
@@ -12,5 +12,11 @@ export const login = (email, pass) => {
     } catch (err) {
       dispatch({ type: ERROR_USER });
     }
+  };
+};
+
+export const logout = () => {
+  return {
+    type: LOGOUT,
   };
 };
