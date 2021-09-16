@@ -38,10 +38,10 @@ export const fetchProducts = () => {
   };
 };
 
-export const removeProduct = (id) => {
+export const removeProduct = (id, token) => {
   return async (dispatch) => {
     try {
-      await removeProductById(id);
+      await removeProductById(id, token);
     } catch (error) {
       dispatch({ type: ERROR_PRODUCTS });
     }

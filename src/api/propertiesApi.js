@@ -22,6 +22,8 @@ export async function getProductsByFilters(filters, api = makeProductsApi()) {
   return api.get(`${PROPERTIES}${queryParams}`);
 }
 
-export async function removeProductById(id, api = makeProductsApi()) {
-  return api.delete(`${PROPERTIES}/${id}`);
+export async function removeProductById(id, token, api = makeProductsApi()) {
+  return api.delete(`${PROPERTIES}/${id}`, {
+    headers: { Authorization: `Bearer ${token}` },
+  });
 }

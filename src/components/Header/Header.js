@@ -1,11 +1,19 @@
 import React from "react";
+import { useDispatch } from "react-redux";
 import { Link, NavLink } from "react-router-dom";
 
 import { HOME, DASHBOARD, LOGIN } from "../../constants/routes";
+import { logout } from "../../redux/auth/actions";
 
 import "./Header.scss";
 
 export default function Header() {
+  const dispatch = useDispatch();
+
+  const handleLogOut = () => {
+    dispatch(logout());
+  };
+
   return (
     <header className="container">
       <nav className="navbar navbar-expand-lg navbar-light">
@@ -49,6 +57,7 @@ export default function Header() {
               <button
                 className="btn btn-warning ms-3 rounded-pill px-3"
                 type="submit"
+                onClick={handleLogOut}
               >
                 Logout
               </button>
