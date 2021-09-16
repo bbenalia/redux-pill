@@ -1,17 +1,24 @@
 import React from "react";
-import { useDispatch } from "react-redux";
-import { Link, NavLink } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, NavLink, useHistory } from "react-router-dom";
 
-import { HOME, DASHBOARD, LOGIN } from "../../constants/routes";
+import { HOME, DASHBOARD, LOGIN, SIGN_UP } from "../../constants/routes";
 import { logout } from "../../redux/auth/actions";
 
 import "./Header.scss";
 
 export default function Header() {
+  const { isAuthenticated } = useSelector((state) => state.users);
+
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const handleLogOut = () => {
     dispatch(logout());
+  };
+
+  const handleSignUp = () => {
+    history.push(SIGN_UP);
   };
 
   return (
@@ -47,21 +54,31 @@ export default function Header() {
               </li>
             </ul>
 
-            <form className="d-flex ms-5">
+            <div className="d-flex ms-5">
               <Link
                 to={LOGIN}
                 className="btn btn-outline-dark rounded-pill px-3"
               >
                 Login
               </Link>
-              <button
-                className="btn btn-warning ms-3 rounded-pill px-3"
-                type="submit"
-                onClick={handleLogOut}
-              >
-                Logout
-              </button>
-            </form>
+              {isAuthenticated ? (
+                <button
+                  className="btn btn-warning ms-3 rounded-pill px-3"
+                  type="submit"
+                  onClick={handleLogOut}
+                >
+                  Logout
+                </button>
+              ) : (
+                <button
+                  className="btn btn-warning ms-3 rounded-pill px-3"
+                  type="submit"
+                  onClick={handleSignUp}
+                >
+                  Sign Up
+                </button>
+              )}
+            </div>
           </div>
         </div>
       </nav>
