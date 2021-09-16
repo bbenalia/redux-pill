@@ -18,7 +18,7 @@ import { removeProduct } from "../../redux/products/actions";
 
 export default function HouseListing() {
   const { status, data } = useSelector((state) => state.products);
-  const { isAuthenticated } = useSelector((state) => state.users);
+  const { user, isAuthenticated } = useSelector((state) => state.users);
 
   const [props, setProps] = useState(data);
 
@@ -33,7 +33,7 @@ export default function HouseListing() {
     if (isAuthenticated) {
       const newPropertiesData = props.filter((prop) => prop.id !== id);
       setProps(newPropertiesData);
-      dispatch(removeProduct(id));
+      dispatch(removeProduct(id, user.token));
     } else {
       history.push("/login");
     }
