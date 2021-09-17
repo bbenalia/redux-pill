@@ -11,14 +11,13 @@ import {
   SET_PRODUCTS,
 } from "./types";
 
-export const setFilteredProducts = (filters) => {
+export const setFilteredProducts = (filters, page) => {
   return async (dispatch) => {
     dispatch({ type: LOADING_PRODUCTS });
 
     try {
-      const apiResult = await getProductsByFilters(filters);
-      const { data } = apiResult.data;
-      dispatch({ type: SET_PRODUCTS, payload: data });
+      const apiResult = await getProductsByFilters(filters, page);
+      dispatch({ type: SET_PRODUCTS, payload: apiResult.data });
     } catch (error) {
       dispatch({ type: ERROR_PRODUCTS });
     }
