@@ -14,6 +14,7 @@ import {
   RESET_FILTERS,
   LOADING_FILTER_DATA,
   ERROR_FILTER_DATA,
+  FILTER_BY_PAGE,
 } from "./types";
 
 export const setCheckboxFilters = (data, filterType) => {
@@ -83,6 +84,13 @@ export const setFilterByUrl = (data) => {
   return {
     type: SET_FILTER_BY_URL,
     payload: data,
+  };
+};
+
+export const setFilterByPage = (page) => {
+  return {
+    type: FILTER_BY_PAGE,
+    payload: page,
   };
 };
 

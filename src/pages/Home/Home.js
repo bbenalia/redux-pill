@@ -36,7 +36,7 @@ function Home() {
         <div className="col-6">
           <p className="mb-1">BUY</p>
           <div className="col-12 m-0 d-flex">
-            {data.map((house, index) => {
+            {data.data?.map((house, index) => {
               if (index < 2) return <HouseCard key={house.id} home={house} />;
               return null;
             })}
@@ -45,7 +45,7 @@ function Home() {
         <div className="col-6 ">
           <p className="mb-1">RENT</p>
           <div className="col-12 m-0 d-flex">
-            {data.map((house, index) => {
+            {data.data?.map((house, index) => {
               if (index >= 2 && index < 4)
                 return <HouseCard key={house.id} home={house} />;
               return null;
