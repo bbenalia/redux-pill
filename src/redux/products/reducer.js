@@ -9,12 +9,14 @@ import {
 const reducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case FETCH_PRODUCTS: {
-      const { data } = action.payload;
-      return { ...state, status: "ok", data: data };
+      // const { data } = action.payload;
+      return { ...state, status: "ok", data: action.payload };
     }
 
-    case SET_PRODUCTS:
+    case SET_PRODUCTS: {
+      // const { data } = action.payload;
       return { ...state, status: "ok", data: action.payload };
+    }
 
     case LOADING_PRODUCTS:
       return { ...state, status: "loading" };

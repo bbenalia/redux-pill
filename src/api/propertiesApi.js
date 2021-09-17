@@ -17,8 +17,12 @@ export async function getProductsBySearch(search, api = makeProductsApi()) {
   return api.get(`${PROPERTIES}q=${search}`);
 }
 
-export async function getProductsByFilters(filters, api = makeProductsApi()) {
-  const queryParams = getFilterParams(filters);
+export async function getProductsByFilters(
+  filters,
+  page,
+  api = makeProductsApi(),
+) {
+  const queryParams = getFilterParams(filters, page);
   return api.get(`${PROPERTIES}${queryParams}`);
 }
 

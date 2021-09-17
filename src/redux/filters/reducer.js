@@ -14,6 +14,7 @@ import {
   RESET_FILTERS,
   LOADING_FILTER_DATA,
   ERROR_FILTER_DATA,
+  FILTER_BY_PAGE,
 } from "./types";
 
 const reducer = (state = INITIAL_STATE, action) => {
@@ -149,6 +150,15 @@ const reducer = (state = INITIAL_STATE, action) => {
         ...state,
         status: "ok",
         filters: { ...filters, ...action.payload },
+      };
+    }
+
+    case FILTER_BY_PAGE: {
+      const { filters } = state;
+      return {
+        ...state,
+        status: "ok",
+        filters: { ...filters, page: action.payload },
       };
     }
 

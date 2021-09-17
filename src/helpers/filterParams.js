@@ -1,5 +1,12 @@
-export function getFilterParams(filters) {
+export function getFilterParams(filters, page) {
   let query = "?";
+
+  // if (filters.page) {
+  //   query += `page=${filters.page}&`;
+  // }
+  if (page) {
+    query += `page=${page}&`;
+  }
 
   if (filters.type) {
     Object.entries(filters.type).map(([key, value]) => {

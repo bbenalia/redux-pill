@@ -30,6 +30,8 @@ export default function getFiltersFromQueryParams(entriesURL) {
       obj.equipment = pair[1];
     } else if (pair[0] === "q") {
       obj.search = pair[1];
+    } else if (pair[0] === "page") {
+      obj.page = 1;
     } else {
       obj.moreFilters = { ...obj.moreFilters, [pair[0]]: true };
     }
